@@ -1,0 +1,45 @@
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <style>
+    form {
+        font-size: 20px;
+        width: 300px;
+        position: relative;
+    }
+    #pass {
+        font-size: 20px;
+        width: 100%;
+        padding: 5px;
+    }
+    #eye {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+    }
+    </style>
+    <script>
+    $(function(){
+        $('#eye').on('click', function() {
+            var pass = $("#pass").attr('type');
+            if (pass === "text") {
+                $("#pass").attr('type', 'password');
+                $("#eye").removeClass("fa-eye").addClass('fa-eye-slash');
+            } else {
+                $("#pass").attr('type', 'text');
+                $("#eye").removeClass("fa-eye-slash").addClass('fa-eye');
+            }
+        });
+    });
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="password" id="pass" value="">
+      <span id="eye" class="fa fa-eye-slash"></span>
+    </form>
+  </body>
+</html>

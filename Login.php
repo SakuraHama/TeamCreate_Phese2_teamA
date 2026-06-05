@@ -1,0 +1,117 @@
+<?php
+require_once __DIR__ . "/def.php";
+$dsn = "mysql:host=" .DB_HOST. "; dbname=". DB_NAME. "; charset=" .DB_CHARSET. ";";
+
+
+$user_name = filter_input(INPUT_POST,"user_name");
+
+$password = filter_input(INPUT_POST,"password");
+if(isset($_POST['loginbtn'])){
+    try{
+    
+        $result = [];
+        $pdo = new PDO($dsn,DB_USER,DB_PASS);
+        // PDOの動作オプションを指定する
+
+        $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+
+        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        // SQL文の準備と実行
+
+        $sql = "SELECT * FROM user where uname = :user_name";
+
+        $sta = $pdo->prepare($sql);
+
+        $sta ->bindParam(':user_name',$user_name,PDO::PARAM_STR);
+
+        $sta->execute();
+        // SQL実行結果の処理
+        $result = $sta->fetch(PDO::FETCH_ASSOC);
+        $message = "";
+        if($user_name != "" && $password != ""){
+            if($result != false){
+                //if(password_verify($password,$result["PASS"])){
+                if($password == $result['PASS']){
+                    $message = "認証に成功しました。";
+                }else{
+                    $message = "ユーザー名、またはパスワードが違います。";
+                }
+            }
+        }else{
+            $message = "ユーザー情報を入力してください。";
+        }
+        // PDOオブジェクトを破棄
+        $sta = null;
+        $pdo = null;
+    }catch(PDOException $e){
+        exit("DBエラー".$e->getMessage());
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン画面</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+</head>
+
+<body>
+<main>
+    <div class="form-control border-black">
+      <form action="Login.php" method="POST">
+        <div class="">
+            <h1>ログイン</h1>
+            <p >
+                <?php
+                    if(isset($message))echo $message;
+                ?>
+            <p>
+          <div class="">
+                <div class="">
+                    <label class="mt-4">ユーザー名</label><br>
+                    <input type="text" placeholder="ユーザー名" class="form-control" name="user_name" required>
+                </div>
+
+                <div class="position-relative">
+                    <label>パスワード</label><br>
+                    <input type="password" placeholder="パスワード" class="form-control " name="password">
+                    <span id="eye" class="position-absolute top-50 end-10 fa fa-eye-slash"></span>
+                </div>
+                
+                <div class="">
+                    <input type="submit" name="loginbtn" value="ログイン" class="btn-primary">
+                </div>
+                </div>
+                <div class="">
+                    <a href="create_account.html">
+                        <p>アカウントをお持ちでない方はこちら<p>
+                    </a>
+                </div>
+            </div>
+        </div>
+      </form>
+
+    </div>
+  </main>
+<script>
+    $(function(){
+        $('#eye').on('click', function() {
+            var pass = $("#pass").attr('type');
+            if (pass === "text") {
+                $("#pass").attr('type', 'password');
+                $("#eye").removeClass("fa-eye").addClass('fa-eye-slash');
+            } else {
+                $("#pass").attr('type', 'text');
+                $("#eye").removeClass("fa-eye-slash").addClass('fa-eye');
+            }
+        });
+    });
+</script>
+</body>
+
+</html>
