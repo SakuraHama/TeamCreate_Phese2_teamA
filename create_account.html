@@ -1,27 +1,55 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>アカウント作成画面</title>
+    <title>項目選択 — Life Step</title>
+    <link rel="stylesheet" href="">
 </head>
-
 <body>
-    <div class="">
-        <h1>ログイン</h1>
 
-        <label>ユーザー名</label>
-        <input type="text" placeholder="ユーザー名を入力" name="user_name">
+<header class="site-header">
+    <span class="logo">Life Step</span>
+    <span style="font-size:14px;color:var(--text-muted);">
+        こんにちは、<strong>ユーザー</strong> さん
+    </span>
+    <a href="Login.php">
+        <button class="logout-btn">ログアウト</button>
+    </a>
+</header>
 
-        <label>パスワード</label>
-        <input type="password" placeholder="パスワードを入力" name="password">
+<div class="container">
+    <h1>項目選択画面</h1>
+    <p class="page-subtitle">取り組みたい項目を選んでください</p>
 
-        <label>確認</label>
-        <input type="password" placeholder="パスワードを入力" name="password">
+    <div class="menu-grid">
 
-        <input class="btn" type="submit" name="loginbtn" value="作成">
+        <a href="disaster.php" class="menu-card">
+            <div class="card-icon">
+                <i class="ti ti-shield"></i>
+            </div>
+            <h2>災害対策</h2>
+            <p>防災用品や避難所情報など</p>
+        </a>
+
+        <a href="location.php" class="menu-card">
+            <div class="card-icon">
+                <i class="ti ti-home"></i>
+            </div>
+            <h2>住居準備</h2>
+            <p>部屋探し、契約、住所登録など</p>
+        </a>
+
+        <a href="furniture.php" class="menu-card">
+            <div class="card-icon">
+                <i class="ti ti-sofa"></i>
+            </div>
+            <h2>家具準備</h2>
+            <p>家電購入など</p>
+        </a>
+
     </div>
-</body>
+</div>
 
+</body>
 </html>
