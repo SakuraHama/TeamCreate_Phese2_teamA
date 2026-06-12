@@ -4,36 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>項目選択画面</title>
-    <link rel="stylesheet" href="styles/">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
-<body>
-    <div class="form">
-        <h1>項目選択画面</h1>
-        <input type="radio" id="disaster" name="category" value="disaster">
-            <label for="disaster">災害対策</label>
-                <p>防災用品や避難所情報など～</p><br>
-        
-        <input type="radio" id="location" name="category" value="location">
-            <label for="location">住居準備</label>
-                <p>部屋探し、契約、住所登録など～</p><br>
+<body class="bg-light">
 
-        <input type="radio" id="furniture" name="category" value="furniture">
-        <label for="furniture">家具準備</label>
-            <p>家電購入など～</p><br>
+    <div class="container mt-5">
 
-        <div class="form">
-            <label for="category">選択した項目:</label>
-                <input type="text" id="selectedCategory" name="selectedCategory" readonly>
+        <div class="card shadow-lg p-4 rounded-4">
+
+            <h1 class="text-center mb-4">
+                項目選択画面
+            </h1>
+
+            <!-- 災害対策 -->
+            <div class="form-check mb-3">
+                <a class="btn btn-primary" href="Detail.php?category=disaster">災害対策</a>
+
+
+                <p class="text-muted ms-4">
+                    防災用品や避難所情報など～
+                </p>
+
+            </div>
+
+            <!-- 住居準備 -->
+            <div class="form-check mb-3">
+                <a class="btn btn-primary" href="Detail.php?category=location">住居準備</a>
+
+                <p class="text-muted ms-4">
+                    部屋探し、契約、住所登録など～
+                </p>
+
+            </div>
+
+            <!-- 家具準備 -->
+            <div class="form-check mb-3">
+                <a class="btn btn-primary" href="Detail.php?category=furniture">家具準備</a>
+
+
+                <p class="text-muted ms-4">
+                    家電購入など～
+                </p>
+
+            </div>
+
+
+            <!-- Logout Button -->
+            <button onclick="location.href='Login.php'" class="btn btn-danger w-100">
+                ログアウト
+            </button>
+
         </div>
-    </div>
 
-    <div>
-        <button class="logout" class="card">
-            <a href="logout.php"></a>
-            ログアウト
-        </button>
     </div>
 
 </body>
