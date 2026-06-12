@@ -79,8 +79,8 @@ if(isset($_POST['loginbtn'])){
 
                 <div class="position-relative">
                     <label>パスワード</label><br>
-                    <input type="password" placeholder="パスワード" class="form-control " name="password">
-                    <span id="eye" class="position-absolute top-50 end-10 fa fa-eye-slash"></span>
+                    <input type="password" placeholder="パスワード" class="form-control " name="password" id="pass">
+                    <span id="eye" class="position-absolute top-50 end-0 p-1 fa fa-eye-slash"></span>
                 </div>
                 
                 <div class="">
