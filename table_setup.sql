@@ -5,7 +5,7 @@ CREATE TABLE user (
     UNIQUE (PASS)
 );
 
-CREATE USER 'dbuser'@'localhost' IDENTIFIED BY '';
+CREATE USER 'dbuser'@'localhost' IDENTIFIED BY 'ecc';
 
 GRANT ALL ON life_step.* 'dbuser'@'localhost';
 
