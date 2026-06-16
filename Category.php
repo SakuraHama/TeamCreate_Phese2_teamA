@@ -22,8 +22,7 @@
             <!-- 災害対策 -->
             <div class="form-check mb-3">
                 <a class="btn btn-primary" href="Step.php? id=1&category=disaster">災害対策</a>
-
-
+                    
                 <p class="text-muted ms-4">
                     防災用品や避難所情報など～
                 </p>
@@ -43,7 +42,6 @@
             <!-- 家具準備 -->
             <div class="form-check mb-3">
                 <a class="btn btn-primary" href="Step.php? id=3&category=furniture">家具準備</a>
-
 
                 <p class="text-muted ms-4">
                     家電購入など～

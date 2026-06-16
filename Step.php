@@ -13,7 +13,7 @@
     <!-- Header -->
     <header class="bg-primary text-white py-4 shadow">
         <div class="container">
-            <h1 class="h3">詳細画面</h1>
+            <h1 class="h3">ステップ画面</h1>
         </div>
     </header>
 
@@ -31,7 +31,7 @@
                 <table class="table table-bordered table-hover">
                     <thead class="table-light">
                         <tr>
-                            <th>No</th>
+                            <th>ステップ</th>
                             <th>内容</th>
                             <th>状態</th>
                         </tr>
