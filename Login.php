@@ -32,9 +32,12 @@ if(isset($_POST['loginbtn'])){
             if($result != false){
                 if(password_verify($password,$result["PASS"])){
                     $message = "認証に成功しました。";
+                    header('Location: Category.php');
                 }else{
                     $message = "ユーザー名、またはパスワードが違います。";
                 }
+            }else{
+                $message = "ユーザー名、またはパスワードが違います。";
             }
         }else{
             $message = "ユーザー情報を入力してください。";
@@ -73,7 +76,7 @@ if(isset($_POST['loginbtn'])){
           <div class="">
                 <div class="">
                     <label class="mt-4">ユーザー名</label><br>
-                    <input type="text" placeholder="ユーザー名" class="form-control" name="user_name" required>
+                    <input type="text" placeholder="ユーザー名" class="form-control" name="user_name">
                 </div>
 
                 <div class="position-relative">
