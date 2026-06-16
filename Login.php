@@ -30,8 +30,7 @@ if(isset($_POST['loginbtn'])){
         $message = "";
         if($user_name != "" && $password != ""){
             if($result != false){
-                //if(password_verify($password,$result["PASS"])){
-                if($password == $result['PASS']){
+                if(password_verify($password,$result["PASS"])){
                     $message = "認証に成功しました。";
                 }else{
                     $message = "ユーザー名、またはパスワードが違います。";
@@ -88,7 +87,7 @@ if(isset($_POST['loginbtn'])){
                 </div>
                 </div>
                 <div class="">
-                    <a href="create_account.html">
+                    <a href="create_account.php">
                         <p>アカウントをお持ちでない方はこちら<p>
                     </a>
                 </div>
