@@ -62,44 +62,68 @@ if(isset($_POST['loginbtn'])){
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
 
-<body>
-<main>
-    <div class="form-control border-black">
-      <form action="Login.php" method="POST">
-        <div class="">
-            <h1>ログイン</h1>
-            <p >
-                <?php
-                    if(isset($message))echo $message;
-                ?>
-            <p>
-          <div class="">
-                <div class="">
+<body class="bg-light">
+
+    <div class="class=container mt-5">
+
+        <form action="Login.php" method="POST">
+
+            <div class="card shadow-lg p-4 rounded-4">
+
+                <h1 class="text-center mb-4">
+
+                    ログイン
+
+                </h1>
+
+                <div class="form-check mb-3">
+
                     <label class="mt-4">ユーザー名</label><br>
+
                     <input type="text" placeholder="ユーザー名" class="form-control" name="user_name">
+
                 </div>
 
-                <div class="position-relative">
+                <div class="form-check mb-3 position-relative">
+
                     <label>パスワード</label><br>
+
                     <input type="password" placeholder="パスワード" class="form-control " name="password" id="pass">
-                    <span id="eye" class="position-absolute top-50 end-0 p-1 fa fa-eye-slash"></span>
+
+                    <span id="eye" class="position-absolute top-50 end-0 m-1 fa fa-eye-slash"></span>
+
                 </div>
                 
-                <div class="">
-                    <input type="submit" name="loginbtn" value="ログイン" class="btn-primary">
+                <div class="form-check mb-3 position-relative">
+
+                    <input type="submit" name="loginbtn" value="ログイン" class="position-absolute btn btn-primary w-25">
+
                 </div>
-                </div>
-                <div class="">
+
+                <p class="text-center mb-4">
+
+                    <?php
+
+                        if(isset($message))echo $message;
+
+                    ?>
+
+                <p>
+
+                <div class="text-center mb-4">
+
                     <a href="create_account.php">
                         <p>アカウントをお持ちでない方はこちら<p>
                     </a>
-                </div>
-            </div>
-        </div>
-      </form>
 
-    </div>
-  </main>
+                </div>
+
+            </div>
+
+        </form>
+
+    <div>
+
 <script>
     $(function(){
         $('#eye').on('click', function() {
