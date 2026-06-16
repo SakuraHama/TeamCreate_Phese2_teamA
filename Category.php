@@ -21,7 +21,7 @@
 
             <!-- 災害対策 -->
             <div class="form-check mb-3">
-                <a class="btn btn-primary" href="Detail.php?category=disaster">災害対策</a>
+                <a class="btn btn-primary" href="Step.php? id=1&category=disaster">災害対策</a>
 
 
                 <p class="text-muted ms-4">
@@ -32,7 +32,7 @@
 
             <!-- 住居準備 -->
             <div class="form-check mb-3">
-                <a class="btn btn-primary" href="Detail.php?category=location">住居準備</a>
+                <a class="btn btn-primary" href="Step.php? id=2&category=location">住居準備</a>
 
                 <p class="text-muted ms-4">
                     部屋探し、契約、住所登録など～
@@ -42,7 +42,7 @@
 
             <!-- 家具準備 -->
             <div class="form-check mb-3">
-                <a class="btn btn-primary" href="Detail.php?category=furniture">家具準備</a>
+                <a class="btn btn-primary" href="Step.php? id=3&category=furniture">家具準備</a>
 
 
                 <p class="text-muted ms-4">
