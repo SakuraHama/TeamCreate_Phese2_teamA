@@ -1,110 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>詳細画面</title>
-</head>
-<body>
-    
-<body>
-  <!-- ▼▼ヘッダー▼▼--------------------------------- -->
-  <header class="bg-info">
-    <div class="text-light ms-5 pt-5 pb-3">
-      <h1 class="h6">詳細画面</h1>
-      <h2 class="pt-3">step by step</h2>
-    </div>
-  </header>
-  <!-- ▲▲ヘッダー▲▲--------------------------------- -->
- 
-  <div class="container-field">
-    <div class="row border h-75">
-      <div class="col-3 border">
-        <form action="kadai08_1.php" method="GET" class="mt-5 m-3">
- 
-          <!-- 検索 -->
-          <div class="form-check form-check-inline mb-3">
-            <input class="form-check-input" type="radio" name="searchType" id="searchRadio1" value="1"
-            onclick="typeCheck();">
-            <label class=" form-check-label" for="searchRadio1">1</label>
-          </div>
-          <div class="form-check form-check-inline mb-3">
-            <input class="form-check-input" type="radio" name="searchType" id="searchRadio1" value="1"
-            onclick="typeCheck();">
-            <label class=" form-check-label" for="searchRadio1">2</label>
-          </div>
-          <div class="form-check form-check-inline mb-3">
-            <input class="form-check-input" type="radio" name="searchType" id="searchRadio1" value="1"
-            onclick="typeCheck();">
-            <label class=" form-check-label" for="searchRadio1">3</label>
-          </div>
-          <div class="form-check form-check-inline mb-3">
-            <input class="form-check-input" type="radio" name="searchType" id="searchRadio1" value="1"
-            onclick="typeCheck();">
-            <label class=" form-check-label" for="searchRadio1">4</label>
-          </div>
-          <div class="form-check form-check-inline mb-3">
-            <input class="form-check-input" type="radio" name="searchType" id="searchRadio2" value="2"
-            
-            onclick="typeCheck();">
-            <label class="form-check-label" for="searchRadio2">5</label>
-          </div>
- 
-          <div class="input-group mb-3">
-            <span class="input-group-text"></span>
-            <input type="text" class="form-control" name="price" id="price" value="">
-            <span class="input-group-text"></span>
-          </div>
- 
-          <div class="input-group mb-3">
-            <label class="input-group-text mb-3" for="category"></label>
-            <select class="form-select mb-3" name="category" id="category">
-              <option value="1"
-              ></option>
-              <option value="2"
-              ></option>
-              <option value="3"
-              ></option>
-            </select>
-          </div>
- 
-          <div class="row">
-            <div class="pt-5 px-0 d-grid gap-2 d-md-flex justify-content-md-end">
-              <input class="btn btn-primary btn-lg" onclick="logout()" type="submit" value="ログアウト">
-              <!-- <a class="btn btn-secondary btn-lg" href="category.php"></a> -->
-            </div><!-- .p-5 d-grid gap-2 d-md-flex justify-content-md-end -->
-          </div><!-- .row -->
- 
-        </form>
-      </div><!-- .col-3 border -->
- 
-      <div class="col-9 border">
- 
-        <table class="table table-hover mt-5 form-control-lg">
-          <thead class="table-light text-secondary">
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-           
-            <tr>
-              <td></a></td>
-              <td></a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
- 
-</body>
 
-</html>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body class="bg-light">
+
+    <!-- Header -->
+    <header class="bg-primary text-white py-4 shadow">
+        <div class="container">
+            <h1 class="h3">詳細画面</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0">災害対策</h4>
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>No</th>
+                            <th>内容</th>
+                            <th>状態</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>防災バッグを準備する</td>
+                            <td>未完了</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>避難所を確認する</td>
+                            <td>未完了</td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>緊急連絡先を登録する</td>
+                            <td>未完了</td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td>非常食を備蓄する</td>
+                            <td>未完了</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="Category.php" class="btn btn-secondary">
+                        戻る
+                    </a>
+
+                    <a href="Login.php" class="btn btn-danger">
+                        ログアウト
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 </html>
