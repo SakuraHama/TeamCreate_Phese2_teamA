@@ -53,32 +53,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <title>アカウント作成画面</title>
 </head>
 
-<body>
-    <form action="create_account.php" method="POST">
-        <div class="">
-            <h1>アカウント作成</h1>
+<body class="bg-light">
 
-            <label>ユーザー名</label>
-            <input type="text" placeholder="ユーザー名を入力" name="user_name">
+    <div class="class=container mt-5 card shadow-lg p-4 rounded-4">  
 
-            <label>パスワード</label>
-            <input type="password" placeholder="パスワードを入力" name="password">
+        <form action="create_account.php" method="POST">
+            <div>
+        
+                <h1 class="text-center mb-3">
 
-            <label>確認</label>
-            <input type="password" placeholder="パスワードを入力" name="password_check">
+                    アカウント作成
 
-            <input class="btn" type="submit" name="createbtn" value="作成">
-            <?php 
-                if(isset($message)){
-                    echo($message);
-                }
-            ?>
+                </h1>
+
+                <div class="form-check mb-3">
+
+                    <label>ユーザー名</label><br>
+                
+                    <input type="text" placeholder="ユーザー名を入力" name="user_name" class="form-control">
+
+                </div>
+
+                <div class="form-check mb-3">
+
+                    <label>パスワード</label><br>
+
+                    <input type="password" placeholder="パスワードを入力" name="password" class="form-control">
+
+                </div>
+
+                <div class="form-check mb-3">
+
+                    <label>確認</label><br>
+
+                    <input type="password" placeholder="確認" name="password_check" class="form-control">
+
+                </div>
+
+                <div class="form-check mb-3 position-relative">
+
+                    <input class="position-absolute btn btn-primary w-25" type="submit" name="createbtn" value="作成">
+
+                </div>
+
+                <div class="text-center">
+
+                    <?php 
+
+                        if(isset($message)){
+                            echo($message);
+                        }
+
+                    ?>
+
+                </div>
+
+            </div>
+
+        </form>
+        
+        <div class="mb-4 position-relative">
+
+                    <a href="Login.php"><button class="btn btn-secondary position-absolute end-0">戻る</button></a>
+
         </div>
-    </form>
-    <a href="Login.php"><button>戻る</button></a>
+
+    </div>
+
 </body>
 
 </html>
