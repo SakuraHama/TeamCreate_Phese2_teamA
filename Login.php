@@ -57,7 +57,7 @@ if(isset($_POST['loginbtn'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ログイン画面</title>
-    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
