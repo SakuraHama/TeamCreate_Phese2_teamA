@@ -1,3 +1,30 @@
+<?php
+require_once __DIR__ . "/def.php";
+$dsn = "mysql:host=" .DB_HOST. "; dbname=". DB_NAME. "; charset=" .DB_CHARSET. ";";
+
+try{
+    $result = [];
+    $pdo = new PDO($dsn,DB_USER,DB_PASS);
+    // PDOの動作オプションを指定する
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    // SQL文の準備と実行
+    $cid = filter_input(INPUT_GET,"cid",FILTER_DEFAULT);
+    $sql = "SELECT * FROM STEP where cid = :cid";
+    $sta = $pdo->prepare($sql);
+    $sta ->bindParam(':cid',$cid,PDO::PARAM_STR);
+    $sta->execute();
+    // SQL実行結果の処理
+    while($row = $sta->fetch(PDO::FETCH_ASSOC)){
+        $result[] = $row;
+    }
+    // PDOオブジェクトを破棄
+    $sta = null;
+    $pdo = null;
+}catch(PDOException $e){
+    exit("DBエラー".$e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -38,13 +65,15 @@
                     </thead>
 
                     <tbody>
+                        <?php foreach($result as $r):?>
                         <tr>
-                            <td>1</td>
-                            <td>防災バッグを準備する</td>
-                            <td>未完了</td>
+                            <td><?=$r['SNO']?></td>
+                            <td><?=$r['SNOTE']?></td>
+                            <td></td>
+                            <td><a href="Detail.php?cid=<?=$r['CID']?>&sno=<?=$r['SNO']?>"><button>詳細</button></a></td>
                         </tr>
-
-                        <tr>
+                        <?php endforeach?>
+                        <!-- <tr>
                             <td>2</td>
                             <td>避難所を確認する</td>
                             <td>未完了</td>
@@ -60,7 +89,7 @@
                             <td>4</td>
                             <td>非常食を備蓄する</td>
                             <td>未完了</td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
 
