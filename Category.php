@@ -36,14 +36,19 @@ try{
 </head>
 
 <body class="bg-light">
+    <!-- Header -->
+    <header class="bg-primary text-white py-4 shadow position-relative">
+        <div class="container">
+            <h1 class="h3">項目選択画面</h1>
+        </div>
+        <button onclick="location.href='Login.php'" class="btn btn-danger w-10 position-absolute end-0 top-0 m-4">
+                ログアウト
+        </button>
+    </header>
 
     <div class="container mt-5">
 
         <div class="card shadow-lg p-4 rounded-4">
-
-            <h1 class="text-center mb-4">
-                項目選択画面
-            </h1>
 
             <!-- 災害対策 -->
             <?php foreach($result as $r):?>
@@ -58,10 +63,6 @@ try{
             <?php endforeach; ?>
 
             <!-- Logout Button -->
-            <button onclick="location.href='Login.php'" class="btn btn-danger w-100">
-                ログアウト
-            </button>
-
         </div>
 
     </div>

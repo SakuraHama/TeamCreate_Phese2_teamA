@@ -63,18 +63,18 @@ if(isset($_POST['loginbtn'])){
 </head>
 
 <body class="bg-light">
+    <!-- Header -->
+    <header class="bg-primary text-white py-4 shadow">
+        <div class="container">
+            <h1 class="h3">ログイン</h1>
+        </div>
+    </header>
 
-    <div class="class=container mt-5">
+    <div class="container mt-5">
 
         <form action="Login.php" method="POST">
 
             <div class="card shadow-lg p-4 rounded-4">
-
-                <h1 class="text-center mb-4">
-
-                    ログイン
-
-                </h1>
 
                 <div class="form-check mb-3">
 
