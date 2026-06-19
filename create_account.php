@@ -60,16 +60,16 @@
 
 <body class="bg-light">
 
-    <div class="class=container mt-5 card shadow-lg p-4 rounded-4">  
+    <!-- Header -->
+    <header class="bg-primary text-white py-4 shadow">
+        <div class="container">
+            <h1 class="h3">アカウント作成</h1>
+        </div>
+    </header>
+    <div class="container mt-5 card shadow-lg p-4 rounded-4">  
 
         <form action="create_account.php" method="POST">
             <div>
-        
-                <h1 class="text-center mb-3">
-
-                    アカウント作成
-
-                </h1>
 
                 <div class="form-check mb-3">
 
