@@ -51,7 +51,7 @@ try{
         <div class="container">
             <h1 class="h3">ステップ</h1>
         </div>
-        <button onclick="location.href='Login.php'" class="btn btn-danger w-10 position-absolute end-0 top-0 m-4">
+        <button onclick="location.href='Logout.php'" class="btn btn-danger w-10 position-absolute end-0 top-0 m-4">
                 ログアウト
         </button>
     </header>
