@@ -17,7 +17,8 @@ try {
     $sno = filter_input(INPUT_GET, "sno", FILTER_DEFAULT);
 
     $sql = "SELECT * FROM STEP_DETAIL where cid = :cid and sno = :sno";
-    $sql2 = "SELECT COUNT(DNO) FROM STEP_DETAIL where cid = :cid and sno = :sno";
+    $sql2 = "SELECT COUNT(DNO) as CD FROM STEP_DETAIL where cid = :cid and sno = :sno";
+    $sql3 = "SELECT count(ACHIEVE) as ACHIEVE FROM ACHIEVEMENT where user_no = :user_no and cid = :cid and sno = :sno and ACHIEVE = true";
 
     $sta = $pdo->prepare($sql);
     $sta->bindParam(':cid', $cid, PDO::PARAM_STR);
@@ -28,10 +29,26 @@ try {
     $sta2->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta2->bindParam(':sno', $sno, PDO::PARAM_STR);
     $sta2->execute();
+
+    $sta3 = $pdo->prepare($sql3);
+    $sta3->bindParam(':cid', $cid, PDO::PARAM_STR);
+    $sta3->bindParam(':sno', $sno, PDO::PARAM_STR);
+    $sta3->bindParam(':user_no',$user_no,PDO::PARAM_INT);
+    $sta3->execute();
+
     // SQL実行結果の処理
     while ($row = $sta->fetch(PDO::FETCH_ASSOC)) {
         $result[] = $row;
     }
+
+    $CD = $sta2->fetch(PDO::FETCH_ASSOC);
+
+    $ACHIEVE = $sta3->fetch(PDO::FETCH_ASSOC);
+    
+    $percent = $ACHIEVE['ACHIEVE'] / $CD['CD'] * 100;
+
+    $percent = round($percent);
+
     // PDOオブジェクトを破棄
     $sta = null;
     $pdo = null;
@@ -66,9 +83,9 @@ try {
         <div class="card shadow">
             <div class="card-header bg-info text-white position-relative">
                 <h4 class="mb-0">チェックリスト</h4>
-                <h4 class="mb-0 position-absolute end-0 top-0 m-2">達成率：50%</h4>
+                <h4 class="mb-0 position-absolute end-0 top-0 m-2">達成率：<?=$percent?>%</h4>
             </div>
-            <form action="">
+            <form action="" method="GET">
                 <div class="p-3">
                     <?php foreach ($result as $r): ?>
                         <div
