@@ -1,27 +1,27 @@
 <?php
 require_once __DIR__ . "/def.php";
-$dsn = "mysql:host=" .DB_HOST. "; dbname=". DB_NAME. "; charset=" .DB_CHARSET. ";";
+$dsn = "mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=" . DB_CHARSET . ";";
 
-try{
+try {
 
     $result = [];
-    $pdo = new PDO($dsn,DB_USER,DB_PASS);
+    $pdo = new PDO($dsn, DB_USER, DB_PASS);
     // PDOの動作オプションを指定する
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // SQL文の準備と実行
     $sql = "SELECT * FROM CATEGORY";
     $sta = $pdo->prepare($sql);
     $sta->execute();
     // SQL実行結果の処理
-    while($row = $sta->fetch(PDO::FETCH_ASSOC)){
+    while ($row = $sta->fetch(PDO::FETCH_ASSOC)) {
         $result[] = $row;
     }
     // PDOオブジェクトを破棄
     $sta = null;
     $pdo = null;
-}catch(PDOException $e){
-    exit("DBエラー".$e->getMessage());
+} catch (PDOException $e) {
+    exit("DBエラー" . $e->getMessage());
 }
 ?>
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ try{
             <h1 class="h3">項目選択画面</h1>
         </div>
         <button onclick="location.href='Logout.php'" class="btn btn-danger w-10 position-absolute end-0 top-0 m-4">
-                ログアウト
+            ログアウト
         </button>
     </header>
 
@@ -50,15 +50,12 @@ try{
 
         <div class="card shadow-lg p-4 rounded-4">
 
-            <!-- 災害対策 -->
-            <?php foreach($result as $r):?>
+            <?php foreach ($result as $r): ?>
                 <div class="form-check mb-3">
-                    <a class="btn btn-primary" href="Step.php?cid=<?=$r['CID']?>"><?=$r['CNAME']?></a>
-                    
+                    <a href="Step.php?cid=<?=$r['CID']?>" class="btn btn-primary"><?= $r['CNAME'] ?></a>
                     <p class="text-muted ms-4">
-                    <?=$r['CDESC']?>
+                        <?= $r['CDESC'] ?>
                     </p>
-
                 </div>
             <?php endforeach; ?>
 
