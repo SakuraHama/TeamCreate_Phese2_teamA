@@ -101,9 +101,6 @@ try {
                 </div>
             </form>
         </div>
-    <a href="Step.php"><button>戻る</button></a>
-    <button type="submit">登録</button>
-
 </body>
 
 </html>
