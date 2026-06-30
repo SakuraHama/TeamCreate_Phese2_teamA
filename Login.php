@@ -6,6 +6,8 @@ $dsn = "mysql:host=" .DB_HOST. "; dbname=". DB_NAME. "; charset=" .DB_CHARSET. "
 $user_name = filter_input(INPUT_POST,"user_name");
 
 $password = filter_input(INPUT_POST,"password");
+
+session_start();
 if(isset($_POST['loginbtn'])){
     try{
     
@@ -32,6 +34,7 @@ if(isset($_POST['loginbtn'])){
             if($result != false){
                 if(password_verify($password,$result["PASS"])){
                     $message = "認証に成功しました。";
+                    $_SESSION['id'] = $result['USER_NO'];
                     header('Location: Category.php');
                 }else{
                     $message = "ユーザー名、またはパスワードが違います。";
