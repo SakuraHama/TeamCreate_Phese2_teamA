@@ -17,7 +17,7 @@ try {
     $dno = $_POST['items'];
     
     foreach($dno as $i){
-        $sql = "INSERT INTO Achievement (CID,SNO,DNO,USER_NO,ACHIEVE) VALUES (:cid,:sno,:dno,:user_no,1)";
+        $sql = "INSERT INTO ACHIEVEMENT (CID,SNO,DNO,USER_NO,ACHIEVE) VALUES (:cid,:sno,:dno,:user_no,1)";
         $sta = $pdo->prepare($sql);
         $sta->bindParam(':cid', $cid, PDO::PARAM_STR);
         $sta->bindParam(':sno', $sno, PDO::PARAM_STR);

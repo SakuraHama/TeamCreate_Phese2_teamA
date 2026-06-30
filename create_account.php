@@ -39,13 +39,14 @@ if (isset($_POST['createbtn'])) {
 
                 $uno = $sta2->fetch(PDO::FETCH_ASSOC);
 
-                $sql3 = "SELECT COUNT(DNO) FROM STEP_DETAIL GROUP BY CID;";
+                $sql3 = "SELECT COUNT(DNO) FROM STEP_DETAIL GROUP BY CID,SNO;";
                 $sta3 = $pdo->prepare($sql3);
                 $sta3->execute();
-                $csteps[] = $sta3->fetchall(PDO::FETCH_ASSOC);
-                foreach($csteps as $step){
-                    for($i = 0;$i < $step;$i += 1){
-                        
+                $cstep_d[] = $sta3->fetchall(PDO::FETCH_ASSOC);
+                
+
+                foreach ($cstep as $step) {
+                    for ($i = 0; $i < $step; $i += 1) {
                     }
                 }
             } else {
