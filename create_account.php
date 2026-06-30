@@ -1,50 +1,66 @@
-<?php 
-    require_once __DIR__ . "/def.php";
-    $dsn = "mysql:host=" .DB_HOST. "; dbname=". DB_NAME. "; charset=" .DB_CHARSET. ";";
+<?php
+require_once __DIR__ . "/def.php";
+$dsn = "mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=" . DB_CHARSET . ";";
 
-    $user_name = filter_input(INPUT_POST,"user_name");
+$user_name = filter_input(INPUT_POST, "user_name");
 
-    $password = filter_input(INPUT_POST,"password");
-    $password_check = filter_input(INPUT_POST,"password_check");
+$password = filter_input(INPUT_POST, "password");
+$password_check = filter_input(INPUT_POST, "password_check");
 
-    
-    if(isset($_POST['createbtn'])){
-        try{
-    
-        $pdo = new PDO($dsn,DB_USER,DB_PASS);
+
+if (isset($_POST['createbtn'])) {
+    try {
+
+        $pdo = new PDO($dsn, DB_USER, DB_PASS);
         // PDOの動作オプションを指定する
 
-        $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+        $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-        $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // SQL文の準備と実行
-        
+
         // SQL実行結果の処理
         $message = "";
-        if($user_name != "" && $password != "" && $password_check != ""){
-            if($password == $password_check){
-                $password = password_hash($password,PASSWORD_DEFAULT);
+        if ($user_name != "" && $password != "" && $password_check != "") {
+            if ($password == $password_check) {
+                $password = password_hash($password, PASSWORD_DEFAULT);
                 $sql = "INSERT INTO USER (UNAME,PASS) VALUES(:user_name,:password);";
                 $sta = $pdo->prepare($sql);
 
-                $sta ->bindParam(':user_name',$user_name,PDO::PARAM_STR);
-                $sta ->bindParam(':password',$password,PDO::PARAM_STR);
+                $sta->bindParam(':user_name', $user_name, PDO::PARAM_STR);
+                $sta->bindParam(':password', $password, PDO::PARAM_STR);
 
                 $sta->execute();
                 $message = "登録が完了しました。";
-            }else{
+
+                $sql2 = "SELECT LAST_INSERT_ID();";
+                $sta2 = $pdo->prepare($sql2);
+                $sta2->execute();
+
+                $uno = $sta2->fetch(PDO::FETCH_ASSOC);
+
+                $sql3 = "SELECT COUNT(DNO) FROM STEP_DETAIL GROUP BY CID;";
+                $sta3 = $pdo->prepare($sql3);
+                $sta3->execute();
+                $csteps[] = $sta3->fetchall(PDO::FETCH_ASSOC);
+                foreach($csteps as $step){
+                    for($i = 0;$i < $step;$i += 1){
+                        
+                    }
+                }
+            } else {
                 $message = "パスワードが確認と異なります。";
             }
-        }else{
+        } else {
             $message = "ユーザー情報を入力してください。";
         }
         // PDOオブジェクトを破棄
         $sta = null;
         $pdo = null;
-        }catch(PDOException $e){
-            exit("DBエラー".$e->getMessage());
-        }
+    } catch (PDOException $e) {
+        exit("DBエラー" . $e->getMessage());
     }
+}
 
 ?>
 <!DOCTYPE html>
@@ -66,7 +82,7 @@
             <h1 class="h3">アカウント作成</h1>
         </div>
     </header>
-    <div class="container mt-5 card shadow-lg p-4 rounded-4">  
+    <div class="container mt-5 card shadow-lg p-4 rounded-4">
 
         <form action="create_account.php" method="POST">
             <div>
@@ -74,7 +90,7 @@
                 <div class="form-check mb-3">
 
                     <label>ユーザー名</label><br>
-                
+
                     <input type="text" placeholder="ユーザー名を入力" name="user_name" class="form-control">
 
                 </div>
@@ -103,11 +119,11 @@
 
                 <div class="text-center">
 
-                    <?php 
+                    <?php
 
-                        if(isset($message)){
-                            echo($message);
-                        }
+                    if (isset($message)) {
+                        echo ($message);
+                    }
 
                     ?>
 
@@ -116,10 +132,10 @@
             </div>
 
         </form>
-        
+
         <div class="mb-4 position-relative">
 
-                    <a href="Login.php"><button class="btn btn-secondary position-absolute end-0">戻る</button></a>
+            <a href="Login.php"><button class="btn btn-secondary position-absolute end-0">戻る</button></a>
 
         </div>
 
