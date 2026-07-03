@@ -33,36 +33,71 @@ try {
 
     <title>項目選択画面</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/category.css">
 </head>
-
 <body class="bg-light">
-    <!-- Header -->
-    <header class="bg-primary text-white py-4 shadow position-relative">
-        <div class="container">
-            <h1 class="h3">項目選択画面</h1>
-        </div>
-        <button onclick="location.href='Logout.php'" class="btn btn-danger w-10 position-absolute end-0 top-0 m-4">
-            ログアウト
-        </button>
-    </header>
+
+    <!-- Paw Background -->
+    <img src="images/pawblue.png" class="paw-bg paw-left" alt="">
+    <img src="images/pawblue.png" class="paw-bg paw-right" alt="">
 
     <div class="container mt-5">
 
-        <div class="card shadow-lg p-4 rounded-4">
+        <div class="text-center mb-5">
 
-            <?php foreach ($result as $r): ?>
-                <div class="form-check mb-3">
-                    <a href="Step.php?cid=<?=$r['CID']?>" class="btn btn-primary"><?= $r['CNAME'] ?></a>
-                    <p class="text-muted ms-4">
-                        <?= $r['CDESC'] ?>
-                    </p>
-                </div>
-            <?php endforeach; ?>
+            <img src="images/life_steplogo.png"
+                class="logo-img"
+                alt="Life Step">
 
-            <!-- Logout Button -->
+            <p class="text-muted mt-3">
+                一歩ずつ、あたらしい毎日へ
+            </p>
+
+            <h4 class="fw-bold mt-4">
+                項目を選択してください
+            </h4>
+
         </div>
 
+        <?php foreach ($result as $r): ?>
+
+            <a href="Step.php?cid=<?=$r['CID']?>"
+               class="text-decoration-none">
+
+                <div class="category-card">
+
+                    <div class="d-flex align-items-center">
+
+                        <div class="flex-grow-1">
+
+                            <h4 class="category-title mb-2">
+                                <?= htmlspecialchars($r['CNAME']) ?>
+                            </h4>
+
+                            <p class="category-desc mb-0">
+                                <?= htmlspecialchars($r['CDESC']) ?>
+                            </p>
+
+                        </div>
+
+                        <div class="arrow">
+                            ➜
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        <?php endforeach; ?>
+
     </div>
+
+    <button onclick="location.href='Logout.php'"
+        class="btn btn-danger w-10 position-absolute end-0 top-0 m-4">
+        ログアウト
+    </button>
 
 </body>
 

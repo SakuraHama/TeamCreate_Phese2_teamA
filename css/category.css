@@ -1,58 +1,66 @@
-/* Background */
 body{
-    background-color: #f8f9fa;
-    font-family: Arial, sans-serif;
+    background:#f5f7fb;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    overflow-x:hidden;
 }
 
-/* Main Form Card */
-.form{
-    width: 500px;
-    margin: 50px auto;
-    background-color: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+.logo-img{
+    width:220px;
 }
 
-/* Title */
-h1{
-    text-align: center;
-    margin-bottom: 30px;
+.category-card{
+    background:#fff;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
 }
 
-/* Radio Section */
-.form-check{
-    margin-bottom: 20px;
+.category-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
-/* Description Text */
-p{
-    color: gray;
-    margin-left: 25px;
-    margin-top: 5px;
+.category-title{
+    color:#1796d2;
+    font-size:24px;
+    font-weight:bold;
 }
 
-/* Input Box */
-#selectedCategory{
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+.category-desc{
+    color:#6c757d;
+    font-size:15px;
 }
 
-/* Logout Button */
-.logout{
-    width: 100%;
-    padding: 12px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
+.arrow{
+    font-size:30px;
+    color:#1796d2;
+    transition:.3s;
 }
 
-/* Hover Effect */
-.logout:hover{
-    background-color: #bb2d3b;
+.category-card:hover .arrow{
+    transform:translateX(8px);
+}
+
+/* Paw Background */
+
+.paw-bg{
+    position:fixed;
+    width:260px;
+    opacity:.08;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.paw-left{
+    top:60px;
+    left:-80px;
+    transform:rotate(-20deg);
+}
+
+.paw-right{
+    bottom:30px;
+    right:-80px;
+    transform:rotate(20deg);
 }

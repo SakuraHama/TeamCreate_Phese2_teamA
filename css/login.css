@@ -1,0 +1,305 @@
+/* ====================================
+   COLOR PALETTE
+==================================== */
+
+:root{
+
+    --primary:#2D9CFF;
+    --primary-dark:#1E88E5;
+
+    --secondary:#F7FBFF;
+
+    --background:#EEF6FF;
+
+    --white:#FFFFFF;
+
+    --border:#D9E9F8;
+
+    --text:#344054;
+
+    --text-light:#6B7280;
+
+    --success:#2EBD85;
+
+    --shadow:0 15px 35px rgba(45,156,255,.15);
+
+}
+
+
+/* ====================================
+   BODY
+==================================== */
+
+body{
+
+    margin:0;
+
+    background:
+    linear-gradient(135deg,#F7FBFF,#EAF5FF);
+
+    font-family:
+    "Yu Gothic",
+    "Segoe UI",
+    sans-serif;
+
+}
+
+
+/* ====================================
+   LOGIN WRAPPER
+==================================== */
+
+.login-wrapper{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+
+/* ====================================
+   LOGIN CARD
+==================================== */
+
+.login-card{
+
+    width:480px;
+
+    background:white;
+
+    border-radius:30px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    padding:45px;
+
+}
+
+
+/* ====================================
+   LOGO
+==================================== */
+
+.logo{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.logo img{
+
+    width:180px;
+
+}
+
+.logo p{
+
+    color:var(--text-light);
+
+}
+
+
+/* ====================================
+   LABELS
+==================================== */
+
+label{
+
+    color:var(--text);
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+
+/* ====================================
+   INPUTS
+==================================== */
+
+.form-control{
+
+    height:55px;
+
+    border-radius:14px;
+
+    background:#F8FBFF;
+
+    border:1px solid #D7E7F6;
+
+    padding-left:18px;
+
+    transition:.25s;
+
+}
+
+.form-control:focus{
+
+    background:white;
+
+    border-color:var(--primary);
+
+    box-shadow:
+    0 0 0 .2rem rgba(45,156,255,.15);
+
+}
+
+
+/* ====================================
+   PASSWORD ICON
+==================================== */
+
+.password-eye{
+
+    color:#8E9AAF;
+
+    cursor:pointer;
+
+}
+
+.password-eye:hover{
+
+    color:var(--primary);
+
+}
+
+
+/* ====================================
+   LOGIN BUTTON
+==================================== */
+
+.btn-login{
+
+    width:100%;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:linear-gradient(
+    90deg,
+    #2D9CFF,
+    #4AA8FF
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.btn-login:hover{
+
+    background:linear-gradient(
+    90deg,
+    #1E88E5,
+    #2D9CFF
+    );
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ====================================
+   REGISTER BUTTON
+==================================== */
+
+.btn-register{
+
+    width:100%;
+
+    height:55px;
+
+    border-radius:14px;
+
+    border:2px solid var(--primary);
+
+    color:var(--primary);
+
+    background:white;
+
+    font-weight:bold;
+
+}
+
+.btn-register:hover{
+
+    background:#F2F9FF;
+
+}
+
+
+/* ====================================
+   ERROR MESSAGE
+==================================== */
+
+.alert{
+
+    border-radius:12px;
+
+}
+
+
+/* ====================================
+   LINKS
+==================================== */
+
+a{
+
+    color:var(--primary);
+
+    text-decoration:none;
+
+}
+
+a:hover{
+
+    color:var(--primary-dark);
+
+}
+
+
+/* ====================================
+   MOBILE
+==================================== */
+
+@media(max-width:576px){
+
+.login-card{
+
+    width:100%;
+
+    padding:30px;
+
+}
+
+.logo img{
+
+    width:140px;
+
+}
+.btn-register small{
+    font-size:13px;
+    font-weight:400;
+}
+
+}
