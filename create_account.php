@@ -46,7 +46,7 @@ if (isset($_POST['createbtn'])) {
                 while ($row = $sta3->fetchall(PDO::FETCH_ASSOC)) {
                     $cstep_d = $row;
                 }
-
+                
                 $sql4 = "INSERT INTO ACHIEVEMENT (CID,SNO,DNO,USER_NO,ACHIEVE) values (:csd_cid,:csd_sno,:i,:uno,0)";
 
                 $sta4 = $pdo->prepare($sql4);
@@ -71,6 +71,9 @@ if (isset($_POST['createbtn'])) {
         }
         // PDOオブジェクトを破棄
         $sta = null;
+        $sta2 = null;
+        $sta3 = null;
+        $sta4 = null;
         $pdo = null;
     } catch (PDOException $e) {
         exit("DBエラー" . $e->getMessage());
