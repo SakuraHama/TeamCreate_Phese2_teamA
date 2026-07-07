@@ -58,3 +58,6 @@ try {
 } catch (PDOException $e) {
     exit("DBエラー" . $e->getMessage());
 }
+
+
+?>
