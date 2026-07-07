@@ -2,6 +2,8 @@
 require_once __DIR__ . "/def.php";
 $dsn = "mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=" . DB_CHARSET . ";";
 
+//ループカウンタ
+ $i = 0 ;
 session_start();
 try {
     $result = [];
@@ -15,25 +17,40 @@ try {
     // SQL文の準備と実行
     $cid = filter_input(INPUT_POST, "cid", FILTER_DEFAULT);
     $sno = filter_input(INPUT_POST, "sno", FILTER_DEFAULT);
+
+    //ステップ詳細を取得する
     $sql = "SELECT * FROM STEP_DETAIL where cid = :cid and sno = :sno";
-    $sql2 = "SELECT COUNT(DNO) as CD FROM STEP_DETAIL where cid = :cid and sno = :sno";
-    $sql3 = "SELECT count(ACHIEVE) as ACHIEVE FROM ACHIEVEMENT where user_no = :user_no and cid = :cid and sno = :sno and ACHIEVE = true";
 
     $sta = $pdo->prepare($sql);
     $sta->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta->bindParam(':sno', $sno, PDO::PARAM_STR);
     $sta->execute();
 
+    //達成率表示のためにステップの数をカウントする
+    $sql2 = "SELECT COUNT(DNO) as CD FROM STEP_DETAIL where cid = :cid and sno = :sno";
+
     $sta2 = $pdo->prepare($sql2);
     $sta2->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta2->bindParam(':sno', $sno, PDO::PARAM_STR);
     $sta2->execute();
+
+    //達成率表示のために達成数をカウントする
+    $sql3 = "SELECT count(ACHIEVE) as ACHIEVE FROM ACHIEVEMENT where user_no = :user_no and cid = :cid and sno = :sno and ACHIEVE = true";
 
     $sta3 = $pdo->prepare($sql3);
     $sta3->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta3->bindParam(':sno', $sno, PDO::PARAM_STR);
     $sta3->bindParam(':user_no', $user_no, PDO::PARAM_INT);
     $sta3->execute();
+
+    //チェックボックスを達成非達成を表示する
+    $sql4 = "SELECT ACHIEVE FROM ACHIEVEMENT WHERE user_no = :user_no and cid = :cid and sno = :sno";
+
+    $sta4 = $pdo->prepare($sql4);
+    $sta4->bindParam(':cid', $cid, PDO::PARAM_STR);
+    $sta4->bindParam(':sno', $sno, PDO::PARAM_STR);
+    $sta4->bindParam(':user_no', $user_no, PDO::PARAM_INT);
+    $sta4->execute();
 
     // SQL実行結果の処理
     while ($row = $sta->fetch(PDO::FETCH_ASSOC)) {
@@ -46,10 +63,13 @@ try {
 
     $percent = $ACHIEVE['ACHIEVE'] / $CD['CD'] * 100;
 
+    $tf = $sta4->fetchall(PDO::FETCH_ASSOC);
+
     // PDOオブジェクトを破棄
     $sta = null;
     $sta2 = null;
     $sta3 = null;
+    $sta4 = null;
     $pdo = null;
 } catch (PDOException $e) {
     exit("DBエラー" . $e->getMessage());
@@ -83,20 +103,21 @@ try {
                 <h4 class="mb-0 position-absolute end-0 top-0 m-2">達成率：<?= $percent ?>%</h4>
             </div>
             <form action="Deta_Update.php" method="POST">
-                <div class="p-3">
-                    <?php foreach ($result as $r): ?>
+                <div class="p-3"></div>
+                    <?php foreach ($result as $r):?>
                         <div
                             class="m-3">
-                            <input type="checkbox" name="items[]" value="<?= $r['DNO'] ?>">
+                            <input type="checkbox" name="items[]" value="<?= $r['DNO'] ?>" <?php if ($tf[$i]['ACHIEVE'] == 1) echo ' checked'; ?>>
                             <lavel class="h2"><?= $r['DETAIL'] ?></lavel>
                         </div>
-                    <?php endforeach; ?>
+                    <?php $i++;
+                    endforeach; ?>
                     <input type="hidden" name="cid" value="<?= $cid ?>">
                     <input type="hidden" name="sno" value="<?= $sno ?>">
                 </div>
                 <div class="d-flex justify-content-between mt-4 position-relative">
                     <button type="submit" class="btn btn-primary position-absolute bottom-50 m-2">登録</button>
-                    <a href="Step.php?cid=<?=$cid?>" class="btn btn-secondary position-absolute end-0 bottom-50 m-2">
+                    <a href="Step.php?cid=<?= $cid ?>" class="btn btn-secondary position-absolute end-0 bottom-50 m-2">
                         戻る
                     </a>
                 </div>
