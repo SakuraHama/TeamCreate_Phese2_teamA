@@ -48,6 +48,8 @@ try {
 
     // PDOオブジェクトを破棄
     $sta = null;
+    $sta2 = null;
+    $sta3 = null;
     $pdo = null;
 } catch (PDOException $e) {
     exit("DBエラー" . $e->getMessage());

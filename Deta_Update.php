@@ -16,7 +16,7 @@ try {
     $sno = filter_input(INPUT_POST, "sno", FILTER_DEFAULT);
     $dno = $_POST['items'];
 
-    $sql = "SELECT ACHIEVE FROM ACHIEVEMENT WHERE CID = :cid and SNO = :sno and DNO = :dno and USER_NO = :user_no;";
+    $sql = "SELECT * FROM ACHIEVEMENT WHERE CID = :cid and SNO = :sno and DNO = :dno and USER_NO = :user_no;";
     $sta = $pdo->prepare($sql);
     $sta->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta->bindParam(':sno', $sno, PDO::PARAM_STR);
@@ -25,39 +25,38 @@ try {
 
     $result = [];
 
-    foreach($dno as $i){
+    foreach ($dno as $i) {
         $d = $i;
         $sta->execute();
-        $result = $sta->fetchall(PDO::FETCH_ASSOC);
-    }
-
-    var_dump($result);
-    $sql2 = "";
-    foreach ($result as $r) {
-        if ($r['ACHIEVE'] == 0) {
-            $sql2 = "UPDATE ACHIEVEMENT SET ACHIEVE = true WHERE CID = :cid and SNO = :sno and DNO = :dno and USER_NO = :user_no;";
-        } else {
-            $sql2 = "UPDATE ACHIEVEMENT SET ACHIEVE = false WHERE CID = :cid and SNO = :sno and DNO = :dno and USER_NO = :user_no;";
+        foreach ($sta->fetchall(PDO::FETCH_ASSOC) as $s) {
+            $result[] = $s;
         }
     }
+
+    $tf = 1;
+    $sql2 = "UPDATE ACHIEVEMENT SET ACHIEVE = :tf WHERE CID = :cid and SNO = :sno and DNO = :dno and USER_NO = :user_no;";
     $sta2 = $pdo->prepare($sql2);
+    $sta2->bindParam(':tf',$tf,PDO::PARAM_STR);
     $sta2->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta2->bindParam(':sno', $sno, PDO::PARAM_STR);
     $sta2->bindParam(':dno', $d, PDO::PARAM_STR);
     $sta2->bindParam(':user_no', $user_no, PDO::PARAM_STR);
-    foreach ($dno as $i) {
-        $d = $i;
+    foreach ($result as $r) {
+        $d = $r['DNO'];
+        if ($r['ACHIEVE'] == 0) {
+            $tf = 1;
+        } else {
+            $tf = 0;
+        }
         $sta2->execute();
     }
     // PDOオブジェクトを破棄
     $sta = null;
+    $sta2 = null;
     $pdo = null;
 
-    //header('Location: Detail.php', true, 307);
+    header('Location: Detail.php', true, 307);
     exit;
 } catch (PDOException $e) {
     exit("DBエラー" . $e->getMessage());
 }
-
-
-?>
