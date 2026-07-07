@@ -15,8 +15,6 @@ try {
     // SQL文の準備と実行
     $cid = filter_input(INPUT_POST, "cid", FILTER_DEFAULT);
     $sno = filter_input(INPUT_POST, "sno", FILTER_DEFAULT);
-    var_dump($cid);
-    var_dump($sno);
     $sql = "SELECT * FROM STEP_DETAIL where cid = :cid and sno = :sno";
     $sql2 = "SELECT COUNT(DNO) as CD FROM STEP_DETAIL where cid = :cid and sno = :sno";
     $sql3 = "SELECT count(ACHIEVE) as ACHIEVE FROM ACHIEVEMENT where user_no = :user_no and cid = :cid and sno = :sno and ACHIEVE = true";
