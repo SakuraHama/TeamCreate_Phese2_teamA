@@ -33,18 +33,34 @@ if (isset($_POST['createbtn'])) {
                 $sta->execute();
                 $message = "登録が完了しました。";
 
-                $sql2 = "SELECT LAST_INSERT_ID();";
+                $sql2 = "SELECT LAST_INSERT_ID() as uno;";
                 $sta2 = $pdo->prepare($sql2);
                 $sta2->execute();
 
                 $uno = $sta2->fetch(PDO::FETCH_ASSOC);
-
-                $sql3 = "SELECT COUNT(DNO) FROM STEP_DETAIL GROUP BY CID;";
+                $cstep_d = [];
+                $sql3 = "SELECT cid,sno,COUNT(*) as cs FROM STEP_DETAIL GROUP BY CID,SNO;";
                 $sta3 = $pdo->prepare($sql3);
                 $sta3->execute();
-                $csteps[] = $sta3->fetchall(PDO::FETCH_ASSOC);
-                foreach ($csteps as $step) {
-                    for ($i = 0; $i < $step; $i += 1) {
+
+                while ($row = $sta3->fetchall(PDO::FETCH_ASSOC)) {
+                    $cstep_d = $row;
+                }
+
+                $sql4 = "INSERT INTO ACHIEVEMENT (CID,SNO,DNO,USER_NO,ACHIEVE) values (:csd_cid,:csd_sno,:i,:uno,0)";
+
+                $sta4 = $pdo->prepare($sql4);
+                $sta4->bindParam(":csd_cid", $cid2, PDO::PARAM_STR);
+                $sta4->bindParam(":csd_sno", $csd2, PDO::PARAM_STR);
+                $sta4->bindParam(":i", $i2, PDO::PARAM_STR);
+                $sta4->bindParam(":uno", $uno['uno'], PDO::PARAM_STR);
+
+                foreach ($cstep_d as $csd) {
+                    $cid2 = $csd['cid'];
+                    $csd2 = $csd['sno'];
+                    for ($i = 1; $i <= $csd['cs']; $i += 1) {
+                        $i2 = $i;
+                        $sta4->execute();
                     }
                 }
             } else {
