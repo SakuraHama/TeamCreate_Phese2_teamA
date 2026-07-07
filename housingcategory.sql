@@ -35,3 +35,38 @@ values('0002','1','7','帰り道の明るさなども考える');
 -- 項目８妥協案を複数考える（案を複数考える事によって、部屋が探しやすくなる）
 insert into step_detail(cid, sno, dno, detail)
 values('0002','1','8','妥協案を複数考える（案を複数考える事によって、部屋が探しやすくなる）');
+
+
+-- STEP２物件の内見の挿入
+insert into step(cid, sno, snote)
+values('0002','2','物件の内見');
+
+-- 項目１気になる部屋が見つかったら、不動産会社に連絡し内見する
+insert into step_detail(cid, sno, dno, detail)
+values('0002','2','1','気になる部屋が見つかったら、不動産会社に連絡し内見する');
+
+-- 項目２スマホの電波が入るか確認する
+insert into step_detail(cid, sno, dno, detail)
+values('0002','2','2','スマホの電波が入るか確認する');
+
+-- 項目３日当たりのよさや風当たりの良さを確認する
+insert into step_detail(cid, sno, dno, detail)
+values('0002','2','3','日当たりのよさや風当たりの良さを確認する');
+
+-- 項目４家具の配置を想像してコンセントの配置を確認する
+insert into step_detail(cid, sno, dno, detail)
+values('0002','2','4','家具の配置を想像してコンセントの配置を確認する');
+
+-- 項目５収納スペースを開けて確認する
+insert into step_detail(cid, sno, dno, detail)
+values('0002','2','5','収納スペースを開けて確認する');
+
+-- 項目６廊下や郵便受け、ゴミ捨て場などの共用スペースを確認する
+insert into step_detail(cid, sno, dno, detail)
+values('0002','2','6','廊下や郵便受け、ゴミ捨て場などの共用スペースを確認する');
+
+-- 項目７最寄りの駅から部屋まで歩いて、かかる時間や道の安全性を確認する
+insert into step_detail(cid, sno, dno, detail)
+values('0002','2','7','最寄りの駅から部屋まで歩いて、かかる時間や道の安全性を確認する');
+
+
