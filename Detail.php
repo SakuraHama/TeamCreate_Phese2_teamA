@@ -54,7 +54,7 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -63,11 +63,8 @@ try {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 </head>
-</head>
-</head>
 
 <body>
-    <!-- Header -->
     <header class="bg-primary text-white py-4 shadow position-relative">
         <div class="container">
             <h1 class="h3">詳細画面</h1>
@@ -103,7 +100,6 @@ try {
                 </div>
             </form>
         </div>
-    </div>
 </body>
 
 </html>

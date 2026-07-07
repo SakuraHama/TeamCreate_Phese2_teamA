@@ -38,7 +38,6 @@ if (isset($_POST['createbtn'])) {
                 $sta2->execute();
 
                 $uno = $sta2->fetch(PDO::FETCH_ASSOC);
-
                 $cstep_d = [];
                 $sql3 = "SELECT cid,sno,COUNT(*) as cs FROM STEP_DETAIL GROUP BY CID,SNO;";
                 $sta3 = $pdo->prepare($sql3);
@@ -85,7 +84,8 @@ if (isset($_POST['createbtn'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/register.css">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <title>アカウント作成画面</title>
 </head>
@@ -93,45 +93,56 @@ if (isset($_POST['createbtn'])) {
 <body class="bg-light">
 
     <!-- Header -->
-    <header class="bg-primary text-white py-4 shadow">
+    <!-- <header class="bg-primary text-white py-4 shadow">
         <div class="container">
             <h1 class="h3">アカウント作成</h1>
         </div>
-    </header>
-    <div class="container mt-5 card shadow-lg p-4 rounded-4">
+    </header> -->
 
-        <form action="create_account.php" method="POST">
-            <div>
+    <div class="login-wrapper">
 
-                <div class="form-check mb-3">
+        <div class="login-card">
 
-                    <label>ユーザー名</label><br>
+            <!-- Logo -->
+            <div class="logo text-center">
 
-                    <input type="text" placeholder="ユーザー名を入力" name="user_name" class="form-control">
+                <img src="images/life_steplogo.png"
+                    class="logo-img"
+                    alt="Life Step">
+
+            </div>
+
+            <form action="create_account.php" method="POST">
+                <div class="mb-4">
+
+                    <label class="form-label">ユーザー名</label><br>
+
+                    <input type="text" placeholder="ユーザー名を入力" name="user_name" class="form-control" required>
 
                 </div>
 
-                <div class="form-check mb-3">
+                <div class="mb-4">
 
-                    <label>パスワード</label><br>
+                    <label class="form-label">パスワード</label><br>
 
-                    <input type="password" placeholder="パスワードを入力" name="password" class="form-control">
+                    <input type="password" placeholder="パスワードを入力" name="password" class="form-control" required>
 
                 </div>
 
-                <div class="form-check mb-3">
+                <div class="mb-4">
 
-                    <label>確認</label><br>
+                    <label class="form-label">確認</label><br>
 
                     <input type="password" placeholder="確認" name="password_check" class="form-control">
 
                 </div>
 
-                <div class="form-check mb-3 position-relative">
+                <!-- <div class="form-check mb-3 position-relative">
 
                     <input class="position-absolute btn btn-primary w-25" type="submit" name="createbtn" value="作成">
 
-                </div>
+                </div> -->
+                <button type="submit" name="createbtn" class="btn btn-login">　作成</button>
 
                 <div class="text-center">
 
@@ -142,19 +153,12 @@ if (isset($_POST['createbtn'])) {
                     }
 
                     ?>
+                    <a href="Login.php" class="btn btn-register mt-3">戻る</a>
 
                 </div>
 
-            </div>
-
-        </form>
-
-        <div class="mb-4 position-relative">
-
-            <a href="Login.php"><button class="btn btn-secondary position-absolute end-0">戻る</button></a>
-
-        </div>
-
+            </form>
+        </div>  
     </div>
 
 </body>
