@@ -20,7 +20,7 @@ if (isset($_POST['loginbtn'])) {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // SQL文の準備と実行
 
-        $sql = "SELECT * FROM user where uname = :user_name";
+        $sql = "SELECT * FROM USER where uname = :user_name";
 
         $sta = $pdo->prepare($sql);
 

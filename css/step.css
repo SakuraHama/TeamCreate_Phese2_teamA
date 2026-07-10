@@ -1,0 +1,88 @@
+body{
+
+    background:#f8f9fa;
+
+}
+
+.step-card{
+
+    background:white;
+
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+}
+
+.logo-img{
+
+    width:110px;
+
+}
+
+.table{
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+}
+
+.table thead{
+
+    font-size:17px;
+
+}
+
+.table td{
+
+    vertical-align:middle;
+
+}
+
+.btn{
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.badge{
+
+    font-size:14px;
+
+    padding:8px 14px;
+
+}
+/* Paw Background */
+
+.paw-bg{
+    position:fixed;
+    width:260px;
+    opacity:.08;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.paw-left{
+    top:60px;
+    left:-80px;
+    transform:rotate(-20deg);
+}
+
+.paw-right{
+    bottom:30px;
+    right:-80px;
+    transform:rotate(20deg);
+}

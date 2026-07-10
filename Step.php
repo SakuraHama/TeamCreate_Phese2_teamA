@@ -66,68 +66,112 @@ try {
     <title>詳細画面</title>
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/step.css">
 </head>
 
-<body class="bg-light">
+<body class="">
 
-    <!-- Header -->
-    <header class="bg-primary text-white py-4 shadow position-relative">
-        <div class="container">
-            <h1 class="h3">ステップ</h1>
-        </div>
-        <button onclick="location.href='Logout.php'" class="btn btn-danger w-10 position-absolute end-0 top-0 m-4">
+    <div class="container py-5">
+
+    <div class="text-end mb-3">
+        <a href="Logout.php" class="btn btn-danger rounded-pill px-4">
             ログアウト
-        </button>
-    </header>
+        </a>
+    </div>
 
-    <!-- Main Content -->
-    <div class="container mt-4">
+    <div class="step-card">
 
-        <div class="card shadow">
+        <div class="text-center">
 
-            <div class="card-header bg-info text-white">
-                <h4 class="mb-0"><?= $CNAME['CNAME'] ?></h4>
-            </div>
+            <img src="images/life_steplogo.png"
+                 class="logo-img"
+                 alt="Life Step">
 
-            <div class="card-body">
+            <h2 class="fw-bold mt-3">
+                <?= htmlspecialchars($CNAME['CNAME']) ?>
+            </h2>
 
-                <table class="table table-bordered table-hover">
-                    <thead class="table-light">
-                        <tr>
-                            <th>ステップ</th>
-                            <th>内容</th>
-                            <th>状態</th>
-                            <th>詳細</th>
-                        </tr>
-                    </thead>
+            <p class="text-muted">
+                ステップ一覧
+            </p>
 
-                    <tbody>
-                        <?php foreach ($result as $r): ?>
+        </div>
+
+        <div class="table-responsive mt-4">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-primary">
+
+                    <tr>
+
+                        <th width="10%">No</th>
+
+                        <th>内容</th>
+
+                        <th width="15%">状態</th>
+
+                        <th width="15%">詳細</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                <?php foreach($result as $r): ?>
+
+                    <tr>
+
+                        <td>
+                            <?= $r['SNO'] ?>
+                        </td>
+
                             <form action="Detail.php" method="POST">
-                            <tr>
-                                <td><?= $r['SNO'] ?></td>
-                                <td><?= $r['SNOTE'] ?></td>
-                                <td></td>
-                                <input type="hidden" name="cid" value="<?= $r['CID'] ?>">
-                                <input type="hidden" name="sno" value="<?= $r['SNO'] ?>">
-                                <td><button type="submit" class="btn btn-primary">詳細</button></td>
-                            </tr>
+
+                                <input type="hidden"
+                                       name="cid"
+                                       value="<?= $r['CID'] ?>">
+
+                                <input type="hidden"
+                                       name="sno"
+                                       value="<?= $r['SNO'] ?>">
+
+                                <button
+                                    class="btn btn-primary rounded-pill px-4">
+
+                                    詳細
+
+                                </button>
+
                             </form>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
 
-                <div class="d-flex justify-content-between mt-4">
-                    <a href="Category.php" class="btn btn-secondary">
-                        戻る
-                    </a>
-                </div>
+                        </td>
 
-            </div>
+                    </tr>
+
+                <?php endforeach; ?>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="text-center mt-4">
+
+            <a href="Category.php"
+               class="btn btn-outline-secondary rounded-pill px-5">
+
+                ← 戻る
+
+            </a>
 
         </div>
 
     </div>
+
+</div>
 
 </body>
 

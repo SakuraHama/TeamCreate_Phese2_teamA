@@ -35,7 +35,7 @@ try {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/category.css">
 </head>
-<body class="bg-light">
+<body class="white">
 
     <!-- Paw Background -->
     <img src="images/pawblue.png" class="paw-bg paw-left" alt="">
@@ -50,7 +50,7 @@ try {
                 alt="Life Step">
 
             <p class="text-muted mt-3">
-                一歩ずつ、あたらしい毎日へ
+                ライブステップへようこそ！🐾
             </p>
 
             <h4 class="fw-bold mt-4">
