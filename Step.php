@@ -2,23 +2,46 @@
 require_once __DIR__ . "/def.php";
 $dsn = "mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=" . DB_CHARSET . ";";
 
+session_start();
+    
 try {
+
     $result = [];
     $pdo = new PDO($dsn, DB_USER, DB_PASS);
+
     // PDOの動作オプションを指定する
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // SQL文の準備と実行
+
+    //カテゴリーIDをGETで取得する
     $cid = filter_input(INPUT_GET, "cid", FILTER_DEFAULT);
+    
+    //ユーザIDを取得しておく
+    $user_no = $_SESSION['id'];
+
+    // SQL文の準備と実行
+
+    //カテゴリー内のステップを取得する
     $sql = "SELECT * FROM STEP where cid = :cid";
-    $sql2 = "SELECT CNAME from CATEGORY where cid = :cid";
+
     $sta = $pdo->prepare($sql);
     $sta->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta->execute();
 
+    //カテゴリー名を表示するためにカテゴリー名を取得する
+    $sql2 = "SELECT CNAME from CATEGORY where cid = :cid";
+    
     $sta2 = $pdo->prepare($sql2);
     $sta2->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta2->execute();
+
+    //ステップの状態を表示するためにそれぞれのステップ数を取得する
+    $sql3 = "select count(*) from achievement where cid = :cid and user_no = :user_no group by sno;";
+
+    $sta3 = $pdo->prepare($sql3);
+
+    //ステップの状態を表示するためにそれぞれのステップから達成数を取得する
+    $sql4 = "SELECT";
     // SQL実行結果の処理
     while ($row = $sta->fetch(PDO::FETCH_ASSOC)) {
         $result[] = $row;
@@ -74,6 +97,7 @@ try {
                             <th>ステップ</th>
                             <th>内容</th>
                             <th>状態</th>
+                            <th>詳細</th>
                         </tr>
                     </thead>
 

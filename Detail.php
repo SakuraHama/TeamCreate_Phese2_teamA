@@ -97,13 +97,13 @@ try {
     </header>
 
     <div class="container mt-5">
-        <div class="card shadow">
+        <div class="card shadow h-auto">
             <div class="card-header bg-info text-white position-relative">
                 <h4 class="mb-0">チェックリスト</h4>
                 <h4 class="mb-0 position-absolute end-0 top-0 m-2">達成率：<?= $percent ?>%</h4>
             </div>
             <form action="Deta_Update.php" method="POST">
-                <div class="p-3"></div>
+                <div class="p-3  overflow-auto">
                     <?php foreach ($result as $r):?>
                         <div
                             class="m-3">
