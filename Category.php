@@ -45,7 +45,7 @@ try {
 
         <div class="text-center mb-5">
 
-            <img src="images/life_steplogo.png"
+            <img src="images/logo_transparent.png"
                 class="logo-img"
                 alt="Life Step">
 
