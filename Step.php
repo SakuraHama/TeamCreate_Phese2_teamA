@@ -3,7 +3,7 @@ require_once __DIR__ . "/def.php";
 $dsn = "mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=" . DB_CHARSET . ";";
 
 session_start();
-    
+
 try {
 
     $result = [];
@@ -15,7 +15,7 @@ try {
 
     //カテゴリーIDをGETで取得する
     $cid = filter_input(INPUT_GET, "cid", FILTER_DEFAULT);
-    
+
     //ユーザIDを取得しておく
     $user_no = $_SESSION['id'];
 
@@ -30,7 +30,7 @@ try {
 
     //カテゴリー名を表示するためにカテゴリー名を取得する
     $sql2 = "SELECT CNAME from CATEGORY where cid = :cid";
-    
+
     $sta2 = $pdo->prepare($sql2);
     $sta2->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta2->execute();
@@ -73,105 +73,105 @@ try {
 
     <div class="container py-5">
 
-    <div class="text-end mb-3">
-        <a href="Logout.php" class="btn btn-danger rounded-pill px-4">
-            ログアウト
-        </a>
-    </div>
-
-    <div class="step-card">
-
-        <div class="text-center">
-
-            <img src="images/life_steplogo.png"
-                 class="logo-img"
-                 alt="Life Step">
-
-            <h2 class="fw-bold mt-3">
-                <?= htmlspecialchars($CNAME['CNAME']) ?>
-            </h2>
-
-            <p class="text-muted">
-                ステップ一覧
-            </p>
-
-        </div>
-
-        <div class="table-responsive mt-4">
-
-            <table class="table table-hover align-middle">
-
-                <thead class="table-primary">
-
-                    <tr>
-
-                        <th width="10%">No</th>
-
-                        <th>内容</th>
-
-                        <th width="15%">状態</th>
-
-                        <th width="15%">詳細</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                <?php foreach($result as $r): ?>
-
-                    <tr>
-
-                        <td>
-                            <?= $r['SNO'] ?>
-                        </td>
-
-                            <form action="Detail.php" method="POST">
-
-                                <input type="hidden"
-                                       name="cid"
-                                       value="<?= $r['CID'] ?>">
-
-                                <input type="hidden"
-                                       name="sno"
-                                       value="<?= $r['SNO'] ?>">
-
-                                <button
-                                    class="btn btn-primary rounded-pill px-4">
-
-                                    詳細
-
-                                </button>
-
-                            </form>
-
-                        </td>
-
-                    </tr>
-
-                <?php endforeach; ?>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <div class="text-center mt-4">
-
-            <a href="Category.php"
-               class="btn btn-outline-secondary rounded-pill px-5">
-
-                ← 戻る
-
+        <div class="text-end mb-3">
+            <a href="Logout.php" class="btn btn-danger rounded-pill px-4">
+                ログアウト
             </a>
+        </div>
+
+        <div class="step-card">
+
+            <div class="text-center">
+
+                <img src="images/life_steplogo.png"
+                    class="logo-img"
+                    alt="Life Step">
+
+                <h2 class="fw-bold mt-3">
+                    <?= htmlspecialchars($CNAME['CNAME']) ?>
+                </h2>
+
+                <p class="text-muted">
+                    ステップ一覧
+                </p>
+
+            </div>
+
+            <div class="table-responsive mt-4">
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-primary">
+
+                        <tr>
+
+                            <th width="10%">No</th>
+
+                            <th>内容</th>
+
+                            <th width="15%">状態</th>
+
+                            <th width="15%">詳細</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <?php foreach ($result as $r): ?>
+
+                            <tr>
+
+                                <td>
+                                    <?= $r['SNO'] ?>
+                                </td>
+
+                                <form action="Detail.php" method="POST">
+
+                                    <input type="hidden"
+                                        name="cid"
+                                        value="<?= $r['CID'] ?>">
+
+                                    <input type="hidden"
+                                        name="sno"
+                                        value="<?= $r['SNO'] ?>">
+
+                                    <button
+                                        class="btn btn-primary rounded-pill px-4">
+
+                                        詳細
+
+                                    </button>
+
+                                </form>
+
+                                </td>
+
+                            </tr>
+
+                        <?php endforeach; ?>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <div class="text-center mt-4">
+
+                <a href="Category.php"
+                    class="btn btn-outline-secondary rounded-pill px-5">
+
+                    ← 戻る
+
+                </a>
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
 </body>
 
