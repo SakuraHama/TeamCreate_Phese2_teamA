@@ -16,6 +16,7 @@ try {
     $sno = filter_input(INPUT_POST, "sno", FILTER_DEFAULT);
     $dno = $_POST['items'];
 
+    //選択された項目が達成か非達成か判定するための情報を取得する
     $sql = "SELECT * FROM ACHIEVEMENT WHERE CID = :cid and SNO = :sno and DNO = :dno and USER_NO = :user_no;";
     $sta = $pdo->prepare($sql);
     $sta->bindParam(':cid', $cid, PDO::PARAM_STR);
@@ -34,15 +35,19 @@ try {
     }
 
     $tf = 1;
+    //達成状況を変更するためのアップデート文を用意
     $sql2 = "UPDATE ACHIEVEMENT SET ACHIEVE = :tf WHERE CID = :cid and SNO = :sno and DNO = :dno and USER_NO = :user_no;";
+
     $sta2 = $pdo->prepare($sql2);
     $sta2->bindParam(':tf',$tf,PDO::PARAM_STR);
     $sta2->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta2->bindParam(':sno', $sno, PDO::PARAM_STR);
     $sta2->bindParam(':dno', $d, PDO::PARAM_STR);
     $sta2->bindParam(':user_no', $user_no, PDO::PARAM_STR);
+    
     foreach ($result as $r) {
         $d = $r['DNO'];
+        //非達成状態であればtrueに変更するため、達成状態であればfalseに、　$tfの値を分岐する
         if ($r['ACHIEVE'] == 0) {
             $tf = 1;
         } else {

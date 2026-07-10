@@ -2,33 +2,67 @@
 require_once __DIR__ . "/def.php";
 $dsn = "mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=" . DB_CHARSET . ";";
  
+session_start();
+//ループカウンタ
+$i = 0;
 try {
+
+    //ユーザIDを取得しておく
+    $user_no = $_SESSION['id'];
+
     $result = [];
     $pdo = new PDO($dsn, DB_USER, DB_PASS);
     // PDOの動作オプションを指定する
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // SQL文の準備と実行
     $cid = filter_input(INPUT_GET, "cid", FILTER_DEFAULT);
+    // SQL文の準備と実行
+    
+    //ステップを表示するためにSTEP表の要素を取得する
     $sql = "SELECT * FROM STEP where cid = :cid";
-    $sql2 = "SELECT CNAME from CATEGORY where cid = :cid";
+
     $sta = $pdo->prepare($sql);
     $sta->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta->execute();
- 
+
+    //カテゴリー名を表示するため、カテゴリー名を取得する
+    $sql2 = "SELECT CNAME from CATEGORY where cid = :cid";
+    
     $sta2 = $pdo->prepare($sql2);
     $sta2->bindParam(':cid', $cid, PDO::PARAM_STR);
     $sta2->execute();
+
+    //それぞれのステップの詳細数を表示するための情報を取得する
+    $sql3 = "SELECT COUNT(*) AS COUNT_STEP FROM STEP_DETAIL WHERE CID = :cid GROUP BY CID,SNO;";
+
+    $sta3 = $pdo->prepare($sql3);
+    $sta3->bindParam(':cid',$cid,PDO::PARAM_STR);
+    $sta3->execute();
+
+    //それぞれのステップの達成数を表示するための情報を取得する
+    $sql4 = "SELECT COUNT(CASE WHEN ACHIEVE = 1 THEN 1 END) AS COUNT_ACHIEVE FROM ACHIEVEMENT WHERE USER_NO = :user_no AND CID = :cid GROUP BY CID,SNO;";
+    
+    $sta4 = $pdo->prepare($sql4);
+    $sta4->bindParam(':cid',$cid,PDO::PARAM_STR);
+    $sta4->bindParam(':user_no',$user_no,PDO::PARAM_STR);
+    $sta4->execute();
+
     // SQL実行結果の処理
     while ($row = $sta->fetch(PDO::FETCH_ASSOC)) {
         $result[] = $row;
     }
  
     $CNAME = $sta2->fetch(PDO::FETCH_ASSOC);
- 
+
+    $count_step = $sta3->fetchAll(PDO::FETCH_ASSOC);
+
+    $count_achieve = $sta4->fetchAll(PDO::FETCH_ASSOC);
+    
     // PDOオブジェクトを破棄
     $sta = null;
     $sta2 = null;
+    $sta3 = null;
+    $sta4 = null;
     $pdo = null;
 } catch (PDOException $e) {
     exit("DBエラー" . $e->getMessage());
@@ -110,9 +144,22 @@ try {
  
                         <td>
  
-                            <span class="badge bg-secondary">
-                                未開始
-                            </span>
+                            
+                                <?php if($count_achieve[$i]['COUNT_ACHIEVE'] == 0){
+                                    echo('<span class="badge bg-secondary">');
+                                    echo('未開始');
+                                    echo('</span>');
+                                }elseif($count_achieve[$i]['COUNT_ACHIEVE'] == $count_step[$i]['COUNT_STEP']){
+                                    echo('<span class="badge bg-primary">');
+                                    echo('COMPLEATE');
+                                    echo('</span>');
+                                }else{
+                                    echo('<span class="badge bg-secondary">');
+                                    echo($count_achieve[$i]['COUNT_ACHIEVE'] ."/". $count_step[$i]['COUNT_STEP']);
+                                    echo('</span>');
+                                }
+                                ?>
+                            
  
                         </td>
  
@@ -141,7 +188,10 @@ try {
  
                     </tr>
  
-                <?php endforeach; ?>
+                <?php 
+                    $i++;
+                    endforeach; 
+                ?>
  
                 </tbody>
  

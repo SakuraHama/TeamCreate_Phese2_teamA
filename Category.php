@@ -48,14 +48,14 @@ try {
             <img src="images/logo_transparent.png"
                 class="logo-img"
                 alt="Life Step">
-
+                <h1 class="text-primary">暮らすてっぷ</h1>
             <p class="text-muted mt-3">
-                ライブステップへようこそ！🐾
+                暮らすてっぷへようこそ！🐾
             </p>
 
-            <h4 class="fw-bold mt-4">
+            <h2 class="fw-bold mt-4 h4">
                 項目を選択してください
-            </h4>
+            </h2>
 
         </div>
 
