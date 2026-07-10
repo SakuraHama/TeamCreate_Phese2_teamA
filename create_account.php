@@ -114,10 +114,11 @@ if (isset($_POST['createbtn'])) {
             <!-- Logo -->
             <div class="logo text-center">
 
-                <img src="images/life_steplogo.png"
+                <img src="images/logo_transparent.png"
                     class="logo-img"
                     alt="Life Step">
 
+                    <h1 class="text-primary h2">暮らすてっぷ</h1>
             </div>
 
             <form action="create_account.php" method="POST">
