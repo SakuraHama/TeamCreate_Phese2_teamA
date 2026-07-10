@@ -33,12 +33,16 @@ if (isset($_POST['createbtn'])) {
                 $sta->execute();
                 $message = "登録が完了しました。";
 
+                //作成されたアカウントのIDを取得する
                 $sql2 = "SELECT LAST_INSERT_ID() as uno;";
+
                 $sta2 = $pdo->prepare($sql2);
                 $sta2->execute();
 
                 $uno = $sta2->fetch(PDO::FETCH_ASSOC);
                 $cstep_d = [];
+
+                //STEP_DETAIL表からそれぞれのカテゴリー、ステップごとのステップの個数を取得する
                 $sql3 = "SELECT cid,sno,COUNT(*) as cs FROM STEP_DETAIL GROUP BY CID,SNO;";
                 $sta3 = $pdo->prepare($sql3);
                 $sta3->execute();
@@ -47,6 +51,7 @@ if (isset($_POST['createbtn'])) {
                     $cstep_d = $row;
                 }
                 
+                //ACHIEVEMENT表にすべてのステップの達成状況がfalseであるデータを挿入
                 $sql4 = "INSERT INTO ACHIEVEMENT (CID,SNO,DNO,USER_NO,ACHIEVE) values (:csd_cid,:csd_sno,:i,:uno,0)";
 
                 $sta4 = $pdo->prepare($sql4);
