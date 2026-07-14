@@ -1,0 +1,103 @@
+body{
+    background:#f8f9fa;
+    font-family:"Segoe UI",sans-serif;
+}
+
+/* Main Card */
+.detail-card{
+    background:#fff;
+    max-width:900px;
+    margin:40px auto;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* Logo */
+.logo-img{
+    width:110px;
+}
+
+/* Progress Card */
+.progress-card{
+    background:#f8f9fa;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:25px;
+}
+
+/* Progress Bar */
+.progress{
+    height:12px;
+    border-radius:50px;
+}
+
+.progress-bar{
+    transition:1s;
+}
+
+/* Checklist Item */
+.check-item{
+    background:white;
+    border:1px solid #e9ecef;
+    border-radius:15px;
+    padding:18px 20px;
+    margin-bottom:15px;
+    transition:.3s;
+}
+
+.check-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+/* Checkbox */
+.form-check-input{
+    width:24px;
+    height:24px;
+    cursor:pointer;
+}
+
+.form-check-label{
+    font-size:20px;
+    margin-left:15px;
+    cursor:pointer;
+}
+
+/* Buttons */
+.btn{
+    border-radius:12px;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+/* Badge */
+.badge{
+    font-size:15px;
+    padding:8px 14px;
+    border-radius:30px;
+}
+
+/* Paw Background */
+.paw-bg{
+    position:fixed;
+    width:260px;
+    opacity:.08;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.paw-left{
+    top:60px;
+    left:-80px;
+    transform:rotate(-20deg);
+}
+
+.paw-right{
+    bottom:30px;
+    right:-80px;
+    transform:rotate(20deg);
+}

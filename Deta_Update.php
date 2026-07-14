@@ -39,7 +39,7 @@ try {
     $sta2->bindParam(':sno', $sno, PDO::PARAM_STR);
     $sta2->bindParam(':dno', $d, PDO::PARAM_STR);
     $sta2->bindParam(':user_no', $user_no, PDO::PARAM_STR);
-    for ($i = 1;$i < $result['CS'];$i++) {
+    for ($i = 1;$i <= $result['CS'];$i++) {
         $d = $i;
         //チェックがついている番号であればtfをtrueに ついていなければfalseにする
         if($i == $dno[$c]){
