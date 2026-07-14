@@ -137,7 +137,7 @@ if (isset($_POST['createbtn'])) {
 
                     <input type="password" placeholder="パスワードを入力" name="password" class="form-control" id="pass" required>
 
-                    <span id="eye" class="position-absolute top-50 end-0 m-1 fa fa-eye-slash"></span>
+                    <span id="eye" class="position-absolute top-50 end-0 m-1 me-3 mt-2 fa fa-eye-slash"></span>
                 </div>
 
                 <div class="mb-4 position-relative">
@@ -146,7 +146,7 @@ if (isset($_POST['createbtn'])) {
 
                     <input type="password" placeholder="確認" name="password_check" class="form-control" id="cpass">
 
-                    <span id="eye2" class="position-absolute top-50 end-0 m-1 fa fa-eye-slash"></span>
+                    <span id="eye2" class="position-absolute top-50 end-0 m-1 me-3 mt-2 fa fa-eye-slash"></span>
                 </div>
 
                 <!-- <div class="form-check mb-3 position-relative">
