@@ -20,7 +20,7 @@ if (isset($_POST['loginbtn'])) {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // SQL文の準備と実行
 
-        $sql = "SELECT * FROM user where uname = :user_name";
+        $sql = "SELECT * FROM USER where uname = :user_name";
 
         $sta = $pdo->prepare($sql);
 
@@ -75,11 +75,10 @@ if (isset($_POST['loginbtn'])) {
             <!-- Logo -->
             <div class="logo text-center ">
 
-                <img src="images/life_steplogo.png"
+                <img src="images/logo_transparent.png"
                     class="logo-img"
                     alt="Life Step">
-
-
+                    <h1 class="text-primary h2">暮らすてっぷ</h1>
                 <p class="text-muted mt-2">
                     一歩ずつ、あたらしい毎日へ
                 </p>
@@ -100,7 +99,7 @@ if (isset($_POST['loginbtn'])) {
                     <label class="form-label">パスワード</label><br>
                     <input type="password" placeholder="パスワード" class="form-control " name="password" id="pass" required>
 
-                    <span id="eye" class="position-absolute top-50 end-0 m-1 fa fa-eye-slash"></span>
+                    <span id="eye" class="position-absolute top-50 end-0 m-1 me-3 mt-2 fa fa-eye-slash"></span>
                 </div>
 
 

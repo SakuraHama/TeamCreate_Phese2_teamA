@@ -35,7 +35,7 @@ try {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/category.css">
 </head>
-<body class="bg-light">
+<body class="white">
 
     <!-- Paw Background -->
     <img src="images/pawblue.png" class="paw-bg paw-left" alt="">
@@ -45,17 +45,17 @@ try {
 
         <div class="text-center mb-5">
 
-            <img src="images/life_steplogo.png"
+            <img src="images/logo_transparent.png"
                 class="logo-img"
                 alt="Life Step">
-
+                <h1 class="text-primary">暮らすてっぷ</h1>
             <p class="text-muted mt-3">
-                一歩ずつ、あたらしい毎日へ
+                暮らすてっぷへようこそ！🐾
             </p>
 
-            <h4 class="fw-bold mt-4">
+            <h2 class="fw-bold mt-4 h4">
                 項目を選択してください
-            </h4>
+            </h2>
 
         </div>
 
