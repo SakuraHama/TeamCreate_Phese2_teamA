@@ -95,6 +95,7 @@ if (isset($_POST['createbtn'])) {
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/register.css">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <title>アカウント作成画面</title>
 </head>
 
@@ -130,20 +131,22 @@ if (isset($_POST['createbtn'])) {
 
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-4 position-relative">
 
                     <label class="form-label">パスワード</label><br>
 
-                    <input type="password" placeholder="パスワードを入力" name="password" class="form-control" required>
+                    <input type="password" placeholder="パスワードを入力" name="password" class="form-control" id="pass" required>
 
+                    <span id="eye" class="position-absolute top-50 end-0 m-1 fa fa-eye-slash"></span>
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-4 position-relative">
 
                     <label class="form-label">確認</label><br>
 
-                    <input type="password" placeholder="確認" name="password_check" class="form-control">
+                    <input type="password" placeholder="確認" name="password_check" class="form-control" id="cpass">
 
+                    <span id="eye2" class="position-absolute top-50 end-0 m-1 fa fa-eye-slash"></span>
                 </div>
 
                 <!-- <div class="form-check mb-3 position-relative">
@@ -170,6 +173,32 @@ if (isset($_POST['createbtn'])) {
         </div>  
     </div>
 
+    <script>
+        $(function() {
+            $('#eye').on('click', function() {
+                var pass = $("#pass").attr('type');
+                if (pass === "text") {
+                    $("#pass").attr('type', 'password');
+                    $("#eye").removeClass("fa-eye").addClass('fa-eye-slash');
+                } else {
+                    $("#pass").attr('type', 'text');
+                    $("#eye").removeClass("fa-eye-slash").addClass('fa-eye');
+                }
+            });
+        });
+        $(function() {
+            $('#eye2').on('click', function() {
+                var pass = $("#cpass").attr('type');
+                if (pass === "text") {
+                    $("#cpass").attr('type', 'password');
+                    $("#eye2").removeClass("fa-eye").addClass('fa-eye-slash');
+                } else {
+                    $("#cpass").attr('type', 'text');
+                    $("#eye2").removeClass("fa-eye-slash").addClass('fa-eye');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
