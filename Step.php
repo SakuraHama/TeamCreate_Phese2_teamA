@@ -152,7 +152,7 @@ try {
                                         echo ('</span>');
                                     } elseif ($count_achieve[$i]['COUNT_ACHIEVE'] == $count_step[$i]['COUNT_STEP']) {
                                         echo ('<span class="badge bg-primary">');
-                                        echo ('COMPLEATE');
+                                        echo ('COMPLETE');
                                         echo ('</span>');
                                     } else {
                                         echo ('<span class="badge bg-secondary">');

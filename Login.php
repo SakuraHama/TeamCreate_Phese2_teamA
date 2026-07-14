@@ -99,7 +99,7 @@ if (isset($_POST['loginbtn'])) {
                     <label class="form-label">パスワード</label><br>
                     <input type="password" placeholder="パスワード" class="form-control " name="password" id="pass" required>
 
-                    <span id="eye" class="position-absolute top-50 end-0 m-1 fa fa-eye-slash"></span>
+                    <span id="eye" class="position-absolute top-50 end-0 m-1 me-3 mt-2 fa fa-eye-slash"></span>
                 </div>
 
 
