@@ -62,6 +62,7 @@ try {
     $ACHIEVE = $sta3->fetch(PDO::FETCH_ASSOC);
 
     $percent = $ACHIEVE['ACHIEVE'] / $CD['CD'] * 100;
+    $percent = round($percent,1);
 
     $tf = $sta4->fetchall(PDO::FETCH_ASSOC);
 
