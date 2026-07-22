@@ -1,0 +1,144 @@
+
+INSERT INTO STEP(CID, SNO, SNOTE)
+VALUES('0002','1','部屋探し');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','1','1','どのような部屋に住みたいかを考える');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','1','2','許容範囲の家賃を考える');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','1','3','部屋の広さはどれぐらいが良いか考える');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','1','4','駅からの距離はどれぐらいがいいか考える');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','1','5','学校や職場への通いやすさを考える');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','1','6','近くにコンビニやスーパーが欲しいか考える');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','1','7','帰り道の明るさなども考える');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','1','8','妥協案を複数考える（案を複数考える事によって、部屋が探しやすくなる）');
+
+
+INSERT INTO STEP(CID, SNO, SNOTE)
+VALUES('0002','2','物件の内見');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','2','1','気になる部屋が見つかったら、不動産会社に連絡し内見する');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','2','2','スマホの電波が入るか確認する');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','2','3','日当たりのよさや風当たりの良さを確認する');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','2','4','家具の配置を想像してコンセントの配置を確認する');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','2','5','収納スペースを開けて確認する');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','2','6','廊下や郵便受け、ゴミ捨て場などの共用スペースを確認する');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','2','7','最寄りの駅から部屋まで歩いて、かかる時間や道の安全性を確認する');
+
+
+INSERT INTO STEP(CID, SNO, SNOTE)
+VALUES('0002','3','住所の契約');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','3','1','契約者の身分証明書を用意する（運転免許証、健康保険証など）　※ただし物件によって必要な書類が異なる');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','3','2','住民票を用意する（契約時に必要）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','3','3','収入証明書や内定通知書を用意する（物件によっては必要ない場合もある）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','3','4','連帯保証人がいる場合は、連帯保証人の収入証明書、承諾書などを用意する　※連帯保証人となる親が遠方に住んでいる場合は、１週間ほど余裕を見ておくと安心');
+
+
+INSERT INTO STEP(CID, SNO, SNOTE)
+VALUES('0002','4','引っ越し業者、電気、ガス、水道などの契約');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','4','1','引っ越し業者、引っ越し日時を決定（引っ越し業者を選ぶ際は、複数の会社に見積もりを取り、比較検討をした方が良い。希望の日時やプランによっても料金が変わってくるので注意）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','4','2','電気を契約する（電力会社に電話する）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','4','3','ガスを契約する（ガス供給会社に電話する。ガスの開栓には立ち会う必要があるため、引っ越し当日が決まったらすぐに予約しよう）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','4','4','水道を契約する（地域の水道局に電話する）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','4','5','インターネット回線を契約する（インターネット回線は工事が必要になる可能性があるため、早めに連絡しよう）');
+
+
+INSERT INTO STEP(CID, SNO, SNOTE)
+VALUES('0002','5','引っ越し前にやる事');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','5','1','引っ越し前の市町村の役所に転出届を提出する（役所に身分証明書と印鑑を持っていく。引っ越し２週間前から可能。提出後にもらう転出証明書は引っ越し後に必要になるので大切に保管しよう）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','5','2','引っ越し先にもっていかないものを捨てるなど処分方法を考える（捨てる場合は、引っ越し当日までのごみ回収日をチェックしよう。）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','5','3','荷づくりをする。（今は使わない布団や衣類など、今必要ではないものから箱に詰めていく）');
+
+
+INSERT INTO STEP(CID, SNO, SNOTE)
+VALUES('0002','6','引っ越し当日にやる事');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','6','1','引っ越し業者の車に荷物を乗せたら、部屋の掃除をして移動する');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','6','2','引っ越し先についたら、車から家具・家電を搬入する。（家具・家電は大きなものから運んでいくと楽。外からの視線が気になる場合は、早めにカーテンを取り付けよう）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','6','3','電気の準備をする（ブレーカーを上げて照明がつくかを確認する）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','6','4','ガスの準備をする（ガスは開栓作業が必要なので、事前に決めている日程に家にいるようにすること）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','6','5','水道の準備をする（水道が使えるかを確認する）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','6','6','荷ほどき・梱包材の処分をする（荷物を出して、引っ越しに使った段ボール箱やクッション材などの梱包材を処分する。）');
+
+
+INSERT INTO STEP(CID, SNO, SNOTE)
+VALUES('0002','7','引っ越し後の各種手続き');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','7','1','引っ越し２週間以内に転入届か転居届を用意する（引っ越し前と市町村が違う場合は転入届を用意する。同じ市町村内での引っ越しの場合は転居届を用意する）');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','7','2','転出届を提出した時に受け取った転出証明書を用意する');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','7','3','運転免許証やパスポートなどの身分証明書を用意する');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','7','4','マイナンバー通知カード、もしくはマイナンバーカードを用意する。');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','7','5','引っ越し先の役所に届け出をする。');
+
+INSERT INTO STEP_DETAIL(CID, SNO, DNO, DETAIL)
+VALUES('0002','7','6','住所登録の変更をする。（住所を登録しているところはすべて住所変更の手続きをする。国民健康保険はほかの市町村に引っ越した場合は加入手続きをする。）');
