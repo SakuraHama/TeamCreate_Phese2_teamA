@@ -5,7 +5,7 @@ body{
 }
 
 .logo-img{
-    width:220px;
+    width:110px;
 }
 
 .category-card{
@@ -24,7 +24,7 @@ body{
 
 .category-title{
     color:#1796d2;
-    font-size:24px;
+    font-size:20px;
     font-weight:bold;
 }
 

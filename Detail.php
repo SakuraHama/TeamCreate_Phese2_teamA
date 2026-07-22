@@ -5,12 +5,16 @@ $dsn = "mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=" . DB_CHARS
 //ループカウンタ
 $i = 0;
 session_start();
+//ユーザIDを取得しておく
+$user_no = $_SESSION['id'];
+if($user_no == null){
+    session_destroy();//セッションを破壊
+    header('Location: Login.php');
+}
 try {
     $result = [];
     $pdo = new PDO($dsn, DB_USER, DB_PASS);
 
-    //ユーザIDを取得しておく
-    $user_no = $_SESSION['id'];
     // PDOの動作オプションを指定する
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -100,7 +104,7 @@ try {
             </div>
 
             <button onclick="location.href='Logout.php'"
-                class="btn btn-danger w-10 position-absolute end-0 top-0 m-4">
+                class="btn btn-danger w-10 position-absolute end-0 top-0  mb-2 me-4 m-3">
                 ログアウト
             </button>
         </div>
