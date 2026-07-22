@@ -3,12 +3,15 @@ require_once __DIR__ . "/def.php";
 $dsn = "mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=" . DB_CHARSET . ";";
 
 session_start();
+//ユーザIDを取得しておく
+$user_no = $_SESSION['id'];
+if($user_no == null){
+    session_destroy();//セッションを破壊
+    header('Location: Login.php');
+}
 //ループカウンタ
 $i = 0;
 try {
-
-    //ユーザIDを取得しておく
-    $user_no = $_SESSION['id'];
 
     $result = [];
     $pdo = new PDO($dsn, DB_USER, DB_PASS);
@@ -85,7 +88,7 @@ try {
     <div class="container py-5">
 
         <div class="text-end mb-3">
-            <a href="Logout.php" class="btn btn-danger rounded-pill px-4">
+            <a href="Logout.php" class="btn btn-danger px-4">
                 ログアウト
             </a>
         </div>
@@ -96,7 +99,8 @@ try {
 
                 <img src="images/logo_transparent.png"
                     class="logo-img"
-                    alt="Life Step">
+                    alt="Life Step"
+                    >
 
                 <h1 class="text-primary h2">暮らすてっぷ</h1>
                 <h2 class="fw-bold mt-3">

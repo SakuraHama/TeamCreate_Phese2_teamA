@@ -1,7 +1,12 @@
 <?php
 require_once __DIR__ . "/def.php";
 $dsn = "mysql:host=" . DB_HOST . "; dbname=" . DB_NAME . "; charset=" . DB_CHARSET . ";";
-
+session_start();
+$user_no = $_SESSION['id'];
+if($user_no == null){
+    session_destroy();//セッションを破壊
+    header('Location: Login.php');
+}
 try {
 
     $result = [];
@@ -35,69 +40,71 @@ try {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/category.css">
 </head>
+
 <body class="white">
+    <div class="container py-5">
+        <button onclick="location.href='Logout.php'"
+            class="btn btn-danger w-10 position-absolute end-0 top-0 m-4">
+            ログアウト
+        </button>
+        <!-- Paw Background -->
+        <img src="images/pawblue.png" class="paw-bg paw-left" alt="">
+        <img src="images/pawblue.png" class="paw-bg paw-right" alt="">
 
-    <!-- Paw Background -->
-    <img src="images/pawblue.png" class="paw-bg paw-left" alt="">
-    <img src="images/pawblue.png" class="paw-bg paw-right" alt="">
+        <div class="container mt-5 card">
 
-    <div class="container mt-5">
+            <div class="text-center mb-5">
 
-        <div class="text-center mb-5">
-
-            <img src="images/logo_transparent.png"
-                class="logo-img"
-                alt="Life Step">
+                <img src="images/logo_transparent.png"
+                    class="logo-img"
+                    alt="Life Step">
                 <h1 class="text-primary">暮らすてっぷ</h1>
-            <p class="text-muted mt-3">
-                暮らすてっぷへようこそ！🐾
-            </p>
+                <p class="text-muted mt-3">
+                    暮らすてっぷへようこそ！🐾
+                </p>
 
-            <h2 class="fw-bold mt-4 h4">
-                項目を選択してください
-            </h2>
+                <h2 class="fw-bold mt-4 h4">
+                    項目を選択してください
+                </h2>
 
-        </div>
+            </div>
 
-        <?php foreach ($result as $r): ?>
+            <?php foreach ($result as $r): ?>
 
-            <a href="Step.php?cid=<?=$r['CID']?>"
-               class="text-decoration-none">
+                <a href="Step.php?cid=<?= $r['CID'] ?>"
+                    class="text-decoration-none">
 
-                <div class="category-card">
+                    <div class="category-card">
 
-                    <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center">
 
-                        <div class="flex-grow-1">
+                            <div class="flex-grow-1">
 
-                            <h4 class="category-title mb-2">
-                                <?= htmlspecialchars($r['CNAME']) ?>
-                            </h4>
+                                <h4 class="category-title mb-2">
+                                    <?= htmlspecialchars($r['CNAME']) ?>
+                                </h4>
 
-                            <p class="category-desc mb-0">
-                                <?= htmlspecialchars($r['CDESC']) ?>
-                            </p>
+                                <p class="category-desc mb-0">
+                                    <?= htmlspecialchars($r['CDESC']) ?>
+                                </p>
 
-                        </div>
+                            </div>
 
-                        <div class="arrow">
-                            ➜
+                            <div class="arrow">
+                                ➜
+                            </div>
+
                         </div>
 
                     </div>
 
-                </div>
+                </a>
 
-            </a>
+            <?php endforeach; ?>
 
-        <?php endforeach; ?>
+        </div>
 
-    </div>
 
-    <button onclick="location.href='Logout.php'"
-        class="btn btn-danger w-10 position-absolute end-0 top-0 m-4">
-        ログアウト
-    </button>
 
 </body>
 
