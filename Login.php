@@ -90,14 +90,14 @@ if (isset($_POST['loginbtn'])) {
                 <div class="mb-4">
 
                     <label class="form-label">ユーザー名</label><br>
-                    <input type="text" placeholder="ユーザー名" class="form-control" name="user_name" required>
+                    <input type="text" placeholder="ユーザー名" class="form-control" name="user_name" value="<?=$user_name?>" required>
 
                 </div>
 
                 <div class="mb-4 position-relative">
 
                     <label class="form-label">パスワード</label><br>
-                    <input type="password" placeholder="パスワード" class="form-control " name="password" id="pass" required>
+                    <input type="password" placeholder="パスワード" class="form-control " name="password" id="pass" value="<?=$password?>" required>
 
                     <span id="eye" class="position-absolute top-50 end-0 m-1 me-3 mt-2 fa fa-eye-slash"></span>
                 </div>

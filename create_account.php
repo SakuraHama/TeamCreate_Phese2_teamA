@@ -127,7 +127,7 @@ if (isset($_POST['createbtn'])) {
 
                     <label class="form-label">ユーザー名</label><br>
 
-                    <input type="text" placeholder="ユーザー名を入力" name="user_name" class="form-control" required>
+                    <input type="text" placeholder="ユーザー名を入力" name="user_name" class="form-control" value="<?=$user_name?>" required>
 
                 </div>
 
